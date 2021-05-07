@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/07 15:57:44 by bokim            ###   ########.fr        #
+#    Updated: 2021/05/07 19:20:40 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ SRCS = ft_atoi.c\
 	   ft_toupper.c\
 	   ft_substr.c\
 	   ft_strjoin.c\
+	   ft_strtrim.c\
+	   ft_split.c\
 
 INCLUDE = libft.h
 
