@@ -6,16 +6,16 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:07:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/04 23:28:26 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/07 15:51:24 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, const void *src, unsigned int n)
-{
-	unsigned int	i;
+#include "libft.h"
 
-	if (!dst && !src)
-		return (dst);
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+
 	i = 0;
 	while (i < n)
 	{

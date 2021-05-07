@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 20:48:14 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/06 15:19:56 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/07 14:31:12 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/07 15:31:28 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t i;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*ptr;
+	size_t	i;
 
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	ptr = (char	*)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (ptr == 0)
+		return ((char *)0);
 	i = 0;
-	while (i < n)
+	while (i < s1_len)
 	{
-		if (((unsigned char *)s1)[i] == ((unsigned char *)s2)[i])
-			i++;
-		else
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		ptr[i] = s1[i];
+		i++;
 	}
-	return (0);
+	while (i < (s1_len + s2_len))
+	{
+		ptr[i] = s2[i - s1_len];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

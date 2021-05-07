@@ -6,9 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:14:00 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/05 21:14:09 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:18:39 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_atoi(const char *str)
 {

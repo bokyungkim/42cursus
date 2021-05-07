@@ -6,16 +6,18 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:55:19 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/05 22:55:44 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 20:12:48 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*ptr;
 	size_t			i;
 
-	ptr = malloc(size * count);
+	ptr = (unsigned char *)malloc(size * count);
 	i = 0;
 	while (ptr[i])
 	{

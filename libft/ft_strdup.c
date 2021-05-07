@@ -6,11 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 23:20:24 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/05 23:20:25 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:25:08 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {

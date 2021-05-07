@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 20:48:14 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/06 15:19:56 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/07 15:33:16 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/07 18:02:33 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t i;
+	char	*ptr;
+	int		i;
+	int		j;
 
+	ptr = (char	*)malloc(sizeof(char) * ft_strlen(s1));
+	if (ptr == 0)
+		return ((char *)0);
 	i = 0;
-	while (i < n)
+	while (i < ft_strlen(s1))
 	{
-		if (((unsigned char *)s1)[i] == ((unsigned char *)s2)[i])
-			i++;
-		else
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		j = 0;
+		while (j < ft_strlen(set))
+		{
+			ft_strchr(s1, (int)(set[j])
+		}
 	}
-	return (0);
 }

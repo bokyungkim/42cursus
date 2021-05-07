@@ -6,9 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:51:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/04 23:35:49 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:23:30 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {

@@ -6,9 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 20:19:15 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/04 23:38:48 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:19:03 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

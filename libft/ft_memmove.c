@@ -6,9 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:52:42 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/04 23:37:47 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:21:31 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

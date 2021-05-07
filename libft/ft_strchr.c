@@ -6,9 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:08:57 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/05 17:23:41 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:22:20 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

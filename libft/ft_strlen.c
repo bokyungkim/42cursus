@@ -6,9 +6,11 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 20:56:38 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/04 20:56:41 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:19:16 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
