@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/07 19:20:40 by bokim            ###   ########.fr        #
+#    Updated: 2021/05/10 23:48:54 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,12 @@ SRCS = ft_atoi.c\
 	   ft_strjoin.c\
 	   ft_strtrim.c\
 	   ft_split.c\
+	   ft_itoa.c\
+	   ft_strmapi.c\
+	   ft_putchar_fd.c\
+	   ft_putstr_fd.c\
+	   ft_putendl_fd.c\
+	   ft_putnbr_fd.c\
 
 INCLUDE = libft.h
 
@@ -59,13 +65,14 @@ ${NAME}: ${OBJS}
 			ar rcs $@ $^
 
 wgcc: ${SRCS}
-	${CC} ${CFLAGS} ${SRCS} main.c ${INCLUDE}
+	${CC} ${CFLAGS} -g ${SRCS} main.c ${INCLUDE}
+	./a.out
 
 clean:
 		${RM} ${OBJS}
 
 gclean:
-		${RM} a.out libft.h.gch
+		${RM} -rf a.out a.out.dSYM libft.h.gch
 
 fclean: clean gclean
 		${RM} ${NAME}

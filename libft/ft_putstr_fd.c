@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 18:12:41 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/11 01:16:39 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/10 23:34:25 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/10 23:43:45 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t i;
+	size_t	i;
 
+	if (!s || fd < 0)
+		return ;
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && i < n)
+	while (i < ft_strlen(s))
 	{
-		if (s1[i] == s2[i])
-			i++;
-		else
-		{
-			if (s1[i] > s2[i])
-				return (1);
-			else
-				return (-1);
-		}
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (0);
 }
