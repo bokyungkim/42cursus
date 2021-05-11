@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:12:41 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 00:36:30 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 03:02:25 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 		{
 			if ((unsigned char)(s1[i]) > (unsigned char)(s2[i]))
 				return (1);
-			else
-				return (-1);
+			return (-1);
 		}
 	}
 	return (0);

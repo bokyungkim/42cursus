@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:48:04 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 02:14:05 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:19:53 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,10 @@ char			*ft_itoa(int n)
 	char			*res;
 	int				sign;
 	int				len;
-	unsigned int	num;
 
-	num = n;
 	sign = 1;
 	if (n < 0)
-	{
 		sign = -1;
-		num *= -1;
-	}
 	len = num_len(n);
 	res = ft_calloc(len + 1, sizeof(char));
 	if (!res)
@@ -51,9 +46,11 @@ char			*ft_itoa(int n)
 		res[len] = '0';
 	while (len >= 0)
 	{
-		res[len--] = '0' + (num % 10);
-		num /= 10;
+		res[len--] = '0' + (n % 10) * sign;
+		n /= 10;
 	}
-	res[0] = (sign == -1) ? '-' : res[0];
+	if (sign == 1)
+		return (res);
+	res[0] = '-';
 	return (res);
 }

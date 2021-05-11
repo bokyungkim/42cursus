@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 14:19:59 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/11 15:51:11 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:46:13 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
-	if (!(new = malloc(sizeof(t_list))))
-		return (0);
+	new = ft_calloc(1, sizeof(t_list));
+	if (!new)
+		return (NULL);
 	new->content = content;
-	new->next = 0;
 	return (new);
 }

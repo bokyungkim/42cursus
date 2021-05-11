@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 00:48:11 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 01:16:23 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 03:12:44 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *str, int c)
 {
 	int		i;
 
-	if (!ft_strncmp(str, "\0", ft_strlen(str)))
+	if (!ft_strncmp(str, "", ft_strlen(str)))
 		return (0);
 	i = ft_strlen(str) - 1;
 	if (c == '\0')

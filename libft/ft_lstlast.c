@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 15:12:10 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/11 15:51:01 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:41:50 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstlast(t_list *lst)
 	t_list	*tmp;
 
 	if (!lst)
-		return (0);
+		return (NULL);
 	tmp = lst;
 	while (tmp->next != NULL)
 		tmp = tmp->next;

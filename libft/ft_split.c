@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:26:44 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/10 21:48:31 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:39:42 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ static int		get_word_size(char const *s, char c)
 static void		free_res(char **res, int i)
 {
 	while (i + 1 > 0)
-	{
-		free(res[i]);
-		i--;
-	}
+		free(res[i--]);
 	free(res);
 }
 
@@ -68,7 +65,8 @@ static int		fill(char **res, char const *s, char c)
 		else
 		{
 			word_size = get_word_size(s, c);
-			if (!(res[i] = (char *)malloc(sizeof(char) * (word_size + 1))))
+			res[i] = (char *)ft_calloc(word_size + 1, sizeof(char));
+			if (!res[i])
 			{
 				free_res(res, i);
 				return (1);
@@ -76,7 +74,7 @@ static int		fill(char **res, char const *s, char c)
 			j = 0;
 			while (*s && *s != c)
 				res[i][j++] = *s++;
-			res[i++][j] = '\0';
+			i++;
 		}
 	}
 	return (0);
@@ -90,10 +88,10 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	words = word_count(s, c);
-	if (!(res = (char **)malloc(sizeof(char *) * (words + 1))))
+	res = (char **)ft_calloc(words + 1, sizeof(char *));
+	if (!res)
 		return (0);
 	if (fill(res, s, c))
 		return (0);
-	res[words] = NULL;
 	return (res);
 }

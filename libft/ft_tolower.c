@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:58:48 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/06 15:21:39 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 03:07:53 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	else
-		return (c);
+		return (c + 'a' - 'A');
+	return (c);
 }

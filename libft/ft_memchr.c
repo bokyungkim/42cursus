@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 20:19:15 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 00:29:28 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:51:35 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		i++;
 		ptr++;
 	}
-	return ((void *)0);
+	return (NULL);
 }

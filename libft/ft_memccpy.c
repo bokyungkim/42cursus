@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:51:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/06 15:23:30 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:49:48 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	size_t i;
 
 	if (!dst && !n)
-		return ((void *)0);
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{
