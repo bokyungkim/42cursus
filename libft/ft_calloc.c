@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:55:19 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/06 20:12:48 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:05:21 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t			i;
 
 	ptr = (unsigned char *)malloc(size * count);
+	if (!ptr)
+		return (0);
 	i = 0;
 	while (ptr[i])
 	{

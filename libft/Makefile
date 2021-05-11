@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/10 23:48:54 by bokim            ###   ########.fr        #
+#    Updated: 2021/05/12 00:48:58 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS = ft_atoi.c\
 	   ft_memmove.c\
 	   ft_memset.c\
 	   ft_strchr.c\
+	   ft_strrchr.c\
 	   ft_strdup.c\
 	   ft_strlcat.c\
 	   ft_strlcpy.c\
@@ -50,13 +51,25 @@ SRCS = ft_atoi.c\
 	   ft_putendl_fd.c\
 	   ft_putnbr_fd.c\
 
+BNS = ft_lstnew.c\
+	  ft_lstadd_front.c\
+	  ft_lstsize.c\
+	  ft_lstlast.c\
+	  ft_lstadd_back.c\
+	  ft_lstdelone.c\
+	  ft_lstclear.c\
+	  ft_lstiter.c\
+	  ft_lstmap.c\
+
 INCLUDE = libft.h
 
 OBJS = ${SRCS:.c=.o}
 
+BNS_O = ${BNS:.c=.o}
+
 RM = rm -f
 
-all: ${NAME}
+all: ${NAME} bonus
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -64,12 +77,15 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 			ar rcs $@ $^
 
+bonus: ${NAME} ${BNS_O}
+			ar rcs $^
+
 wgcc: ${SRCS}
-	${CC} ${CFLAGS} -g ${SRCS} main.c ${INCLUDE}
+	${CC} ${CFLAGS} -g ${SRCS} ${BNS} main.c ${INCLUDE}
 	./a.out
 
 clean:
-		${RM} ${OBJS}
+		${RM} ${OBJS} ${BNS_O}
 
 gclean:
 		${RM} -rf a.out a.out.dSYM libft.h.gch
@@ -79,4 +95,4 @@ fclean: clean gclean
 
 re: fclean all
 
-.PHONY: all wgcc clean gclean fclean re
+.PHONY: all wgcc bonus clean gclean fclean re

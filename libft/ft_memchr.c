@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 20:19:15 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/06 15:19:03 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 00:29:28 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	ptr = (unsigned char *)s;
 	i = 0;
-	if (!s)
-		return ((void *)0);
 	while (i < n)
 	{
 		if (*ptr == (unsigned char)c)

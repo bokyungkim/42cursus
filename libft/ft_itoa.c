@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:48:04 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/10 23:09:56 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/12 02:14:05 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		num_len(int n)
+static int		num_len(int n)
 {
 	int		len;
 
@@ -28,31 +28,32 @@ int		num_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*res;
-	char	sign;
-	int		len;
+	char			*res;
+	int				sign;
+	int				len;
+	unsigned int	num;
 
+	num = n;
+	sign = 1;
 	if (n < 0)
-		sign = '-';
+	{
+		sign = -1;
+		num *= -1;
+	}
 	len = num_len(n);
-	if (!(res = malloc(sizeof(char) * len + 1)))
+	res = ft_calloc(len + 1, sizeof(char));
+	if (!res)
 		return (0);
-	res[len] = '\0';
-	len--;
+	res[len--] = '\0';
 	if (n == 0)
 		res[len] = '0';
-	while (n != 0)
+	while (len >= 0)
 	{
-		if (n > 0)
-			res[len] = '0' + (n % 10);
-		else
-			res[len] = '0' + (n % 10 * (-1));
-		n /= 10;
-		len--;
+		res[len--] = '0' + (num % 10);
+		num /= 10;
 	}
-	if (sign == '-')
-		res[0] = sign;
+	res[0] = (sign == -1) ? '-' : res[0];
 	return (res);
 }

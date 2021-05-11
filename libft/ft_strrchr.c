@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 21:52:36 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 02:07:43 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/12 00:48:11 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/12 01:16:23 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
+	int		i;
+
+	if (!ft_strncmp(str, "\0", ft_strlen(str)))
+		return (0);
+	i = ft_strlen(str) - 1;
+	if (c == '\0')
+        return ((char *)str + i + 1);
+	while (i >= 0)
+	{
+		if ((unsigned char)(str[i]) == (unsigned char)c)
+			return ((char *)(str + i));
+		i--;
+	}
 	return (0);
 }
