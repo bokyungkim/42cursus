@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:26:44 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 02:39:42 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/13 18:17:52 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static int		word_count(char const *s, char c)
 	int		count;
 
 	count = 0;
-	while (*s)
+	while (*s != '\0')
 	{
 		if (*s == c)
 			s++;
 		else
 		{
 			count++;
-			while (*s != c && *s)
+			while (*s != c && *s != '\0')
 				s++;
 		}
 	}
@@ -36,7 +36,7 @@ static int		get_word_size(char const *s, char c)
 	int		i;
 
 	i = 0;
-	while (*s != c && *s != 0)
+	while (*s != c && *s != '\0')
 	{
 		s++;
 		i++;
@@ -46,8 +46,11 @@ static int		get_word_size(char const *s, char c)
 
 static void		free_res(char **res, int i)
 {
-	while (i + 1 > 0)
-		free(res[i--]);
+	while (i >= 0)
+	{
+		free(res[i]);
+		i--;
+	}
 	free(res);
 }
 
@@ -58,7 +61,7 @@ static int		fill(char **res, char const *s, char c)
 	int		word_size;
 
 	i = 0;
-	while (*s)
+	while (*s != '\0')
 	{
 		if (*s == c)
 			s++;
@@ -72,7 +75,7 @@ static int		fill(char **res, char const *s, char c)
 				return (1);
 			}
 			j = 0;
-			while (*s && *s != c)
+			while (*s != '\0' && *s != c)
 				res[i][j++] = *s++;
 			i++;
 		}
@@ -86,12 +89,20 @@ char			**ft_split(char const *s, char c)
 	int		words;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	words = word_count(s, c);
+	if (ft_strncmp(s, "", 1) == 0)
+	{
+		res = (char **)ft_calloc(2, sizeof(char *));
+		if (!res)
+			return (NULL);
+		res[0] = "";
+		return (res);
+	}
 	res = (char **)ft_calloc(words + 1, sizeof(char *));
 	if (!res)
-		return (0);
+		return (NULL);
 	if (fill(res, s, c))
-		return (0);
+		return (NULL);
 	return (res);
 }
