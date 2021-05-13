@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:26:44 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/13 18:17:52 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/13 20:42:43 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,6 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	words = word_count(s, c);
-	if (ft_strncmp(s, "", 1) == 0)
-	{
-		res = (char **)ft_calloc(2, sizeof(char *));
-		if (!res)
-			return (NULL);
-		res[0] = "";
-		return (res);
-	}
 	res = (char **)ft_calloc(words + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
