@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:08:57 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 02:59:17 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/15 18:55:14 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if (*s == (char)c)
+		if (*s == (unsigned char)c)
 			return ((char *)s);
 		s++;
 	}
-	if (*s == (char)c)
+	if (*s == (unsigned char)c)
 		return ((char *)s);
 	return (NULL);
 }

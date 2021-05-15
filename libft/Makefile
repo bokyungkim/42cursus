@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/12 00:48:58 by bokim            ###   ########.fr        #
+#    Updated: 2021/05/15 17:17:12 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,18 +67,24 @@ OBJS = ${SRCS:.c=.o}
 
 BNS_O = ${BNS:.c=.o}
 
+ifdef HAS_BNS
+	OBJ_FILES = ${OBJS} ${BNS_O}
+else
+	OBJ_FILES = ${OBJS}
+endif
+
 RM = rm -f
 
-all: ${NAME} bonus
+all: ${NAME}
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJ_FILES}
 			ar rcs $@ $^
 
-bonus: ${NAME} ${BNS_O}
-			ar rcs $^
+bonus:
+			make HAS_BNS=1 all
 
 wgcc: ${SRCS}
 	${CC} ${CFLAGS} -g ${SRCS} ${BNS} main.c ${INCLUDE}
