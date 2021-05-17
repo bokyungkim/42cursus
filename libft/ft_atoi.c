@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:14:00 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 01:33:04 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/17 17:15:50 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static const char	*pass_whitespace(const char *str)
+static const char	*ft_pass_whitespace(const char *str)
 {
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
@@ -26,7 +26,7 @@ int					ft_atoi(const char *str)
 
 	result = 0;
 	sign = 1;
-	str = pass_whitespace(str);
+	str = ft_pass_whitespace(str);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

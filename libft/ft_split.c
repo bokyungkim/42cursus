@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:26:44 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/13 20:42:43 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/17 17:36:15 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		word_count(char const *s, char c)
+static int		ft_word_count(char const *s, char c)
 {
 	int		count;
 
@@ -31,7 +31,7 @@ static int		word_count(char const *s, char c)
 	return (count);
 }
 
-static int		get_word_size(char const *s, char c)
+static int		ft_get_word_size(char const *s, char c)
 {
 	int		i;
 
@@ -44,7 +44,7 @@ static int		get_word_size(char const *s, char c)
 	return (i);
 }
 
-static void		free_res(char **res, int i)
+static void		ft_free_res(char **res, int i)
 {
 	while (i >= 0)
 	{
@@ -54,7 +54,7 @@ static void		free_res(char **res, int i)
 	free(res);
 }
 
-static int		fill(char **res, char const *s, char c)
+static int		ft_fill(char **res, char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -67,11 +67,11 @@ static int		fill(char **res, char const *s, char c)
 			s++;
 		else
 		{
-			word_size = get_word_size(s, c);
+			word_size = ft_get_word_size(s, c);
 			res[i] = (char *)ft_calloc(word_size + 1, sizeof(char));
 			if (!res[i])
 			{
-				free_res(res, i);
+				ft_free_res(res, i);
 				return (1);
 			}
 			j = 0;
@@ -90,11 +90,11 @@ char			**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	words = word_count(s, c);
+	words = ft_word_count(s, c);
 	res = (char **)ft_calloc(words + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
-	if (fill(res, s, c))
+	if (ft_fill(res, s, c))
 		return (NULL);
 	return (res);
 }

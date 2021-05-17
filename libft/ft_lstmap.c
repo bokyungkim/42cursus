@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 17:56:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/13 22:10:29 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/17 17:07:49 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*cpy;
 	t_list	*tmp;
 
-	if (!lst || !f || !del)
+	if (!lst || !f)
 		return (NULL);
 	cpy = NULL;
 	while (lst)

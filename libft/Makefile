@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/15 17:17:12 by bokim            ###   ########.fr        #
+#    Updated: 2021/05/17 18:43:26 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,19 +86,12 @@ ${NAME}: ${OBJ_FILES}
 bonus:
 			make HAS_BNS=1 all
 
-wgcc: ${SRCS}
-	${CC} ${CFLAGS} -g ${SRCS} ${BNS} main.c ${INCLUDE}
-	./a.out
-
 clean:
 		${RM} ${OBJS} ${BNS_O}
 
-gclean:
-		${RM} -rf a.out a.out.dSYM libft.h.gch
-
-fclean: clean gclean
+fclean: clean
 		${RM} ${NAME}
 
 re: fclean all
 
-.PHONY: all wgcc bonus clean gclean fclean re
+.PHONY: all bonus clean fclean re

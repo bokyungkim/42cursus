@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 23:10:41 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 03:02:12 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/17 17:58:59 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (0);
 	i = 0;
 	len = ft_strlen(s);
-	str = ft_calloc(len + 1, sizeof(char));
+	str = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (0);
 	while (i < len)
