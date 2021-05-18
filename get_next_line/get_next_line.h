@@ -13,8 +13,12 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#define OK 1
-#define END 0
-#define ERROR -1
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE=32
+# endif
+
+// #define OK 1
+// #define END 0
+// #define ERROR -1
 
 #endif

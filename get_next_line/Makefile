@@ -12,7 +12,7 @@
 
 CC = wgcc
 
-CFLAGS = -g -Wall -Wextra -Werror -D BUFFER_SIZE=32
+CFLAGS = -g -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=32
 
 SRCS = get_next_line.c \
 	   get_next_line_utils.c \
@@ -37,7 +37,7 @@ clean:
 		${RM} ${OBJS}
 
 fclean: clean
-		${RM} a.out
+		${RM} a.out *.h.gch
 
 re: fclean all
 

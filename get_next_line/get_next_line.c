@@ -14,6 +14,6 @@
 
 int		get_next_line(int fd, char **line)
 {
-    if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE <= 0)
-        return (ERROR);
+    if ((fd < 0 && fd > 256) || !line || BUFFER_SIZE <= 0)
+        return (-1);
 }
