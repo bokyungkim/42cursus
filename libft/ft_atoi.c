@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:14:00 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/17 17:15:50 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/18 15:20:00 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int					ft_atoi(const char *str)
 		result += *str - '0';
 		str++;
 	}
-	if (result > 9223372036854775807)
+	if (result == 9223372036854775808 && sign == -1)
+		return (result * sign);
+	else if (result > 9223372036854775807)
 	{
 		if (sign == 1)
 			return (-1);
