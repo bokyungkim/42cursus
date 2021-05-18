@@ -1,19 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:48:05 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/18 15:55:01 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/18 15:53:14 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/18 15:54:21 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int		get_next_line(int fd, char **line)
-{
-    if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE <= 0)
-        return (ERROR);
-}
