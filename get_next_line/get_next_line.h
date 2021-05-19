@@ -20,6 +20,13 @@
 #  define BUFFER_SIZE 32
 # endif
 
+typedef struct		s_list
+{
+	int             fd;
+    char            *backup;
+	struct s_list	*next;
+}					t_list;
+
 // #define OK 1
 // #define END 0
 // #define ERROR -1

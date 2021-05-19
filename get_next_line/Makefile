@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = wgcc
+CC = gcc
 
-CFLAGS = -g -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=${SIZE}
+CFLAGS = -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=${SIZE}
 
 SRCS = get_next_line.c \
 	   get_next_line_utils.c \
