@@ -12,7 +12,7 @@
 
 CC = wgcc
 
-CFLAGS = -g -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=32
+CFLAGS = -g -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=${SIZE}
 
 SRCS = get_next_line.c \
 	   get_next_line_utils.c \
