@@ -12,7 +12,8 @@
 
 CC = gcc
 
-CFLAGS = -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=${SIZE}
+CFLAGS = #-g3 -fsanitize=address
+		-Wall -Wextra -Werror -D BUFFER_SIZE=32
 
 SRCS = get_next_line.c \
 	   get_next_line_utils.c \
@@ -22,7 +23,7 @@ INCLUDE = get_next_line.h
 
 OBJS = ${SRCS:.c=.o}
 
-RM = rm -f
+RM = rm -rf
 
 all: ${CC}
 
@@ -37,7 +38,7 @@ clean:
 		${RM} ${OBJS}
 
 fclean: clean
-		${RM} a.out *.h.gch
+		${RM} a.out *.h.gch a.out.dSYM
 
 re: fclean all
 

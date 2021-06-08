@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	char* line;
 	int	check;
