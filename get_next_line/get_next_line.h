@@ -27,6 +27,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int		get_next_line(int fd, char **line);
+
 // #define OK 1
 // #define END 0
 // #define ERROR -1
