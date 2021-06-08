@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 16:07:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/14 17:38:29 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/18 15:53:40 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/18 15:58:34 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+#include <stdlib.h>
+#include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
+typedef struct		s_list
 {
-	size_t	i;
+	int             fd;
+    char            *backup;
+	struct s_list	*next;
+}					t_list;
 
-	i = 0;
-	if (!dst && !src)
-		return (NULL);
-	while (i < n)
-	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dst);
-}
+int		get_next_line(int fd, char **line);
+
+// #define OK 1
+// #define END 0
+// #define ERROR -1
+
+#endif

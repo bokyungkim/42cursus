@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/12 00:48:58 by bokim            ###   ########.fr        #
+#    Updated: 2021/05/17 18:43:26 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,32 +67,31 @@ OBJS = ${SRCS:.c=.o}
 
 BNS_O = ${BNS:.c=.o}
 
+ifdef HAS_BNS
+	OBJ_FILES = ${OBJS} ${BNS_O}
+else
+	OBJ_FILES = ${OBJS}
+endif
+
 RM = rm -f
 
-all: ${NAME} bonus
+all: ${NAME}
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJ_FILES}
 			ar rcs $@ $^
 
-bonus: ${NAME} ${BNS_O}
-			ar rcs $^
-
-wgcc: ${SRCS}
-	${CC} ${CFLAGS} -g ${SRCS} ${BNS} main.c ${INCLUDE}
-	./a.out
+bonus:
+			make HAS_BNS=1 all
 
 clean:
 		${RM} ${OBJS} ${BNS_O}
 
-gclean:
-		${RM} -rf a.out a.out.dSYM libft.h.gch
-
-fclean: clean gclean
+fclean: clean
 		${RM} ${NAME}
 
 re: fclean all
 
-.PHONY: all wgcc bonus clean gclean fclean re
+.PHONY: all bonus clean fclean re

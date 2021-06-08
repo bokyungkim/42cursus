@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 15:33:16 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 03:05:17 by bokim            ###   ########.fr       */
+/*   Updated: 2021/05/17 17:31:03 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	find_first(char const *s, char const *set)
+static size_t	ft_find_first(char const *s, char const *set)
 {
 	size_t	first;
 
@@ -22,7 +22,7 @@ static size_t	find_first(char const *s, char const *set)
 	return (first);
 }
 
-static size_t	find_last(char const *s, char const *set)
+static size_t	ft_find_last(char const *s, char const *set)
 {
 	size_t	i;
 	size_t	len;
@@ -44,10 +44,10 @@ char			*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	else if (!set || ft_strncmp(s1, "", ft_strlen(s1)) == 0)
 		return (ft_strdup(s1));
-	first = find_first(s1, set);
+	first = ft_find_first(s1, set);
 	if (first == ft_strlen(s1))
 		return (ft_strdup(""));
-	last = find_last(s1, set);
+	last = ft_find_last(s1, set);
 	ptr = (char *)malloc(sizeof(char) * (last - first + 1));
 	if (!ptr)
 		return (0);
