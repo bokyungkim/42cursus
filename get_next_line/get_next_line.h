@@ -15,17 +15,11 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
-
-typedef struct		s_list
-{
-	int             fd;
-    char            *backup;
-	struct s_list	*next;
-}					t_list;
 
 int		get_next_line(int fd, char **line);
 
