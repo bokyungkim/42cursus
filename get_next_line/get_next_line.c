@@ -12,76 +12,77 @@
 
 #include "get_next_line.h"
 
-char    *find_newline(char *buff, char c)
+static int  read_until_nl(int fd, char **backup)
 {
-    char    *idx;
+    int     len;
+    int     ret;
+    char    *tmp;
 
-    idx = buff;
-    while (*idx)
-	{
-        if (*idx == c)
-            return (idx);
-        idx++;
-	}
-    return (NULL);
-}
-
-int     cut_line(char **line, char **backup, char *buff, char *newline_ptr)
-{
-    *newline_ptr = '\0';
-    if (*backup)
-    {
-        if (!(*line = ft_strdup(*backup)))
-            return (-1);
-        *line = ft_strjoin(*line, buff);
-    }
-    else
-        if (!(*line = ft_strdup(buff)))
-            return (-1);
+    len = ft_strlen(*backup);
+    tmp = (char *)malloc(sizeof(char) * (len + BUFFER_SIZE + 1));
+    if (!tmp)
+        return (-1);
+    ft_memcpy(tmp, *backup, len);
+    ret = read(fd, tmp + len, BUFFER_SIZE);
+    *(tmp + len + ret + 1) = '\0';
     free(*backup);
-    *backup = newline_ptr + 1;
-    return (1);
+    *backup = tmp;
+    return (ret);
 }
 
-int     return_all(char **line, char **backup, char *buff, int read_size)
+static int  split_line(char **line, char **backup)
 {
-    char    *newline_ptr;
+    int     len;
+    char    *nl_ptr;
+    char    *tmp;
 
-    if (read_size < 0)
+    nl_ptr = ft_strchr(*backup, '\n');
+    *nl_ptr = '\0';
+    len = ft_strlen(nl_ptr + 1);
+    *line = ft_strdup(*backup);
+    if (!(*line))
         return (-1);
-    if (*backup && (newline_ptr = find_newline(*backup, '\n')))
-        return (cut_line(line, backup, buff, newline_ptr));
-    if (*backup)
-    {
-        *line = *backup;
-        free(*backup);
-        *backup = NULL;
-    }
-    else if (!(*line = ft_strdup("")))
+    tmp = (char *)malloc(sizeof(char) * (len + 1));
+    if (!tmp)
     {
         free(*backup);
         *backup = NULL;
         return (-1);
     }
-    return (0);  
+    ft_memcpy(tmp, nl_ptr + 1, len + 1);
+    free(*backup);
+    *backup = tmp;
+    return (0);
 }
 
 int		get_next_line(int fd, char **line)
 {
     static char     *backup[OPEN_MAX];
-    char            buff[BUFFER_SIZE + 1];
-    char            *newline_ptr;
     int             read_size;
 
-    if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE <= 0)
+    if (fd < 0 || fd >= OPEN_MAX || !line || BUFFER_SIZE <= 0)
         return (-1);
-    while ((read_size = read(fd, buff, BUFFER_SIZE)) > 0)
+    if (!(backup[fd]))
     {
-        buff[read_size] = '\0';
-        if (backup[fd])
-            backup[fd] = ft_strjoin(backup[fd], buff);
-        if ((newline_ptr = find_newline(buff, '\n')))
-            return (cut_line(line, &backup[fd], buff, newline_ptr));
+        backup[fd] = ft_strdup("");
+        if (!(backup[fd]))
+            return (-1);
     }
-    return (return_all(line, backup, buff, read_size));
+    while (!(ft_strchr(backup[fd], '\n')) && ((read_size = read_until_nl(fd, &backup[fd])) > 0))
+        ;
+    if (read_size == -1)
+        return (-1);
+    else if ((ft_strchr(backup[fd], '\n')))
+    {
+        split_line(line, &backup[fd]);
+        return (1);
+    }
+    else if (read_size == 0)
+    {
+        *line = ft_strdup(backup[fd]);
+        if (!(*line))
+            return (-1);
+        return (0);
+    }
+    return (-1);
 }
