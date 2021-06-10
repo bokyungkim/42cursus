@@ -6,13 +6,13 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/06/09 17:08:33 by bokim            ###   ########.fr        #
+#    Updated: 2021/06/10 22:40:57 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror -D BUFFER_SIZE=32
+CFLAGS = -g3 -fsanitize=address -g -Wall -Wextra -Werror -D BUFFER_SIZE=32
 
 SRCS = get_next_line.c \
 	   get_next_line_utils.c \

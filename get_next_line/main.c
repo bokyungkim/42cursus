@@ -12,8 +12,10 @@ int main(void)
 	{
 		printf("%s\n", line);
 		free(line);
+		line = NULL;
 	}
 	printf("%s\n", line);
 	free(line);
+	line = NULL;
 	return (0);
 }

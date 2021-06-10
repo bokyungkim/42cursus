@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:48:05 by bokim             #+#    #+#             */
-/*   Updated: 2021/06/10 22:40:38 by bokim            ###   ########.fr       */
+/*   Created: 2021/06/10 22:44:27 by bokim             #+#    #+#             */
+/*   Updated: 2021/06/10 22:44:35 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void		free_backup(char **backup)
 {
