@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 23:20:24 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/17 17:22:26 by bokim            ###   ########.fr       */
+/*   Updated: 2021/06/11 20:22:41 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char			*ptr;
-	unsigned int	len;
-	unsigned int	j;
+	char	*ptr;
+	int		i;
+	int		size;
 
-	len = 0;
-	j = 0;
-	while (s1[len] != '\0')
-		len++;
-	ptr = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!ptr)
-		return (0);
-	while (*s1)
+	size = 0;
+	while (s1[size])
+		++size;
+	if (!(ptr = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		ptr[j] = *s1;
-		j++;
-		s1++;
+		ptr[i] = s1[i];
+		i++;
 	}
+	ptr[i] = '\0';
 	return (ptr);
 }
