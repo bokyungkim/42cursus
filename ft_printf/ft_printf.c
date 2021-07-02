@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:07:34 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/02 20:55:15 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/02 23:30:46 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_init_option(t_opt *option)
 {
-	option->minus = 0;
+	option->left = 0;
 	option->zero = 0;
 	option->width = 0;
-	option->star = 0;
+	option->dot = 0;
 	option->precision = -1;
 	option->type = 0;
 }
@@ -32,8 +32,8 @@ int		ft_control(va_list ap, char *input)
 	option = (t_opt *)malloc(sizeof(t_opt));
 	if (!option)
 		return (-1);
-	idx = option->index;
-	option->index = 0;
+	idx = &(option->index);
+	*idx = 0;
 	while (input[*idx] != '\0')
 	{
 		while (input[*idx] != '%' && input[*idx] != '\0')

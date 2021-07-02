@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion.c                                    :+:      :+:    :+:   */
+/*   ft_convert_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/02 20:55:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/03 00:21:22 by bokim            ###   ########.fr       */
+/*   Created: 2021/07/03 00:03:15 by bokim             #+#    #+#             */
+/*   Updated: 2021/07/03 00:22:04 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putspace(int size)
+/* 특징 : precision 무시, 0 flag는 undefined behavior */
+int		ft_convert_char(char c, t_opt *option)
 {
-	int		i;
+	int		len;
 
-	i = 0;
-	while (i < size)
+	len = 1;
+	if (option->width > 1)
+		len = option->width;
+	if (option->left == 0)
 	{
-		ft_putchar_fd(' ', 1);
-		i++;
+		ft_putspace(len - 1);
+		ft_putchar_fd(c, 1);
 	}
-}
-
-int		ft_conversion(int c, t_opt *option, va_list ap)
-{
-	int		cnt;
-
-	cnt = 0;
-	if (c == 'c')
-		cnt += ft_convert_char(va_arg(ap, int), option);
-	else if (c == 's')
-		cnt += ft_convert_str(va_arg(ap, char *), option);
+	else
+	{
+		ft_putchar_fd(c, 1);
+		ft_putspace(len - 1);
+	}
+	return (len);
 }
