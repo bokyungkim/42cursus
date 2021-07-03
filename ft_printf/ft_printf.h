@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:09:57 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/03 00:20:46 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/03 17:13:20 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int		ft_parse(char *input, t_opt *option, va_list ap);
 /* conversion */
 int		ft_conversion(int c, t_opt *option, va_list ap);
 void	ft_putspace(int size);
+void	ft_putzero(int size);
+int		ft_get_numsize(unsigned long n, int base);
 int		ft_convert_char(char c, t_opt *option);
 int		ft_convert_str(char *str, t_opt *option);
+int		ft_convert_int(int n, t_opt *option);
 
 #endif

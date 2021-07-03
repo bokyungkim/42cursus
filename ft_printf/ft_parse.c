@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:52:20 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/02 23:36:36 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/03 15:38:48 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		ft_parse(char *input, t_opt *option, va_list ap)
 		option->precision = 0;
 		(*idx)++;
 	}
-	while (ft_strchr(DIGIT, input[*idx]) && input) //precision일 때
+	while (ft_strchr(DIGIT, input[*idx]) && option->dot == 1 && input) //precision일 때
 		*idx = ft_parse_precision(input[*idx], option, ap);
 	if (ft_strchr(TYPE, input[*idx]) && input) //specifier일 때
 		*idx = ft_parse_type(input[*idx], option);
