@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:09:57 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/06 19:40:33 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 00:01:40 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define DIGIT "0123456789*" //width, precision 파싱에 사용
 # define TYPE "cspdiuxX%" //specifier 파싱에 사용
 
-typedef struct	s_opt
+typedef struct s_opt
 {
 	int		index;
 	int		left;

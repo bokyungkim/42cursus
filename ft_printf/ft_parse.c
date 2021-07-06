@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:52:20 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/06 23:52:54 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 00:00:43 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_parse_flag(char c, t_opt *option)
+int	ft_parse_flag(char c, t_opt *option)
 {
 	if (c == '-') //- flag
 		option->left = 1;
@@ -21,10 +21,10 @@ int		ft_parse_flag(char c, t_opt *option)
 	return (option->index + 1);
 }
 
-int		ft_parse_width(char c, t_opt *option, va_list ap)
+int	ft_parse_width(char c, t_opt *option, va_list ap)
 {
 	int		tmp;
-	
+
 	tmp = 0;
 	if (c == '*')
 	{
@@ -44,10 +44,10 @@ int		ft_parse_width(char c, t_opt *option, va_list ap)
 	return (option->index + 1);
 }
 
-int		ft_parse_precision(char c, t_opt *option, va_list ap)
+int	ft_parse_precision(char c, t_opt *option, va_list ap)
 {
 	int		tmp;
-	
+
 	tmp = 0;
 	if (c == '*')
 	{
@@ -62,13 +62,13 @@ int		ft_parse_precision(char c, t_opt *option, va_list ap)
 	return (option->index + 1);
 }
 
-int		ft_parse_type(char c, t_opt *option)
+int	ft_parse_type(char c, t_opt *option)
 {
 	option->type = (int)c;
 	return (option->index + 1);
 }
 
-int		ft_parse(char *input, t_opt *option, va_list ap)
+int	ft_parse(char *input, t_opt *option, va_list ap)
 {
 	int		cnt;
 	int		*idx;

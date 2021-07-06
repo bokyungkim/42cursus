@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:55:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/06 23:29:37 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 23:58:14 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_putspace(int size)
 void	ft_putzero(int size)
 {
 	int		i;
+
 	i = 0;
 	while (i < size)
 	{
@@ -35,7 +36,7 @@ void	ft_putzero(int size)
 	}
 }
 
-int		ft_get_numsize(int n, int base)
+int	ft_get_numsize(int n, int base)
 {
 	int		size;
 
@@ -49,13 +50,13 @@ int		ft_get_numsize(int n, int base)
 		while (n > 0)
 		{
 			n /= base;
-			size++; 
+			size++;
 		}
 	}
 	return (size);
 }
 
-int		ft_conversion(int c, t_opt *option, va_list ap)
+int	ft_conversion(int c, t_opt *option, va_list ap)
 {
 	int		cnt;
 

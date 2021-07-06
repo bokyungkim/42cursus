@@ -6,14 +6,14 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 00:03:15 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/03 00:22:04 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 23:58:32 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /* 특징 : precision 무시, 0 flag는 undefined behavior */
-int		ft_convert_char(char c, t_opt *option)
+int	ft_convert_char(char c, t_opt *option)
 {
 	int		len;
 

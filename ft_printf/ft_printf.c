@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:07:34 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/06 17:13:09 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 00:11:25 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_init_option(t_opt *option)
+void	ft_reset_option(t_opt *option, int *idx)
 {
 	option->left = 0;
 	option->zero = 0;
@@ -20,9 +20,10 @@ void	ft_init_option(t_opt *option)
 	option->dot = 0;
 	option->precision = -1;
 	option->type = 0;
+	*idx += 1;
 }
 
-int		ft_control(va_list ap, char *input)
+int	ft_control(va_list ap, char *input)
 {
 	t_opt	*option;
 	int		cnt;
@@ -43,8 +44,7 @@ int		ft_control(va_list ap, char *input)
 		}
 		if (input[*idx] == '%' && input[*idx] != '\0')
 		{
-			ft_init_option(option);
-			*idx += 1;
+			ft_reset_option(option, idx);
 			cnt += ft_parse(input, option, ap);
 		}
 	}
@@ -52,11 +52,11 @@ int		ft_control(va_list ap, char *input)
 	return (cnt);
 }
 
-int		ft_printf(const char *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	va_list	ap;
 	int		ret;
-	
+
 	va_start(ap, input);
 	ret = ft_control(ap, (char *)input);
 	va_end(ap);

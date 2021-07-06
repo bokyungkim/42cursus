@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 21:03:20 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/06 17:12:49 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 00:02:00 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putchar(char s, int fd)
+int	ft_putchar(char s, int fd)
 {
 	ft_putchar_fd(s, fd);
 	return (1);
