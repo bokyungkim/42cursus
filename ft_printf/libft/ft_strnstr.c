@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:53:43 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/13 22:00:44 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:40:58 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
-	size_t i;
-	size_t j;
-	size_t k;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
 	if (!*to_find)
 		return ((char *)str);

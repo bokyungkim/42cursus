@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:26:44 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/17 17:36:15 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:39:18 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_word_count(char const *s, char c)
+static int	ft_word_count(char const *s, char c)
 {
 	int		count;
 
@@ -31,7 +31,7 @@ static int		ft_word_count(char const *s, char c)
 	return (count);
 }
 
-static int		ft_get_word_size(char const *s, char c)
+static int	ft_get_word_size(char const *s, char c)
 {
 	int		i;
 
@@ -44,7 +44,7 @@ static int		ft_get_word_size(char const *s, char c)
 	return (i);
 }
 
-static void		ft_free_res(char **res, int i)
+static void	ft_free_res(char **res, int i)
 {
 	while (i >= 0)
 	{
@@ -54,7 +54,7 @@ static void		ft_free_res(char **res, int i)
 	free(res);
 }
 
-static int		ft_fill(char **res, char const *s, char c)
+static int	ft_fill(char **res, char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -83,7 +83,7 @@ static int		ft_fill(char **res, char const *s, char c)
 	return (0);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		words;

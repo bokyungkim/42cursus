@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:48:04 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/17 17:57:09 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:37:44 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_num_len(int n)
+static int	ft_num_len(int n)
 {
 	int		len;
 
@@ -28,7 +28,7 @@ static int		ft_num_len(int n)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char			*res;
 	int				sign;

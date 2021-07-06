@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 18:33:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/13 21:26:54 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:41:17 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *ptr;
+	char	*ptr;
 
 	if (!s)
 		return (NULL);

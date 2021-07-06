@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:52:20 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/03 15:38:48 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 23:52:54 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int		ft_parse_flag(char c, t_opt *option)
 		option->left = 1;
 	else //0 flag
 		option->zero = 1;
-	if (option->left == 1 && option->zero == 1)
-		option->zero = 0;
 	return (option->index + 1);
 }
 
@@ -28,7 +26,7 @@ int		ft_parse_width(char c, t_opt *option, va_list ap)
 	int		tmp;
 	
 	tmp = 0;
-	if (c = '*')
+	if (c == '*')
 	{
 		tmp = va_arg(ap, int);
 		if (tmp > 0)
@@ -51,7 +49,7 @@ int		ft_parse_precision(char c, t_opt *option, va_list ap)
 	int		tmp;
 	
 	tmp = 0;
-	if (c = '*')
+	if (c == '*')
 	{
 		tmp = va_arg(ap, int);
 		if (tmp < 0)
@@ -89,6 +87,8 @@ int		ft_parse(char *input, t_opt *option, va_list ap)
 	}
 	while (ft_strchr(DIGIT, input[*idx]) && option->dot == 1 && input) //precision일 때
 		*idx = ft_parse_precision(input[*idx], option, ap);
+	if (option->left == 1 && option->zero == 1)
+		option->zero = 0;
 	if (ft_strchr(TYPE, input[*idx]) && input) //specifier일 때
 		*idx = ft_parse_type(input[*idx], option);
 	else //specifier가 없으면

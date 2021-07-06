@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:14:00 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/18 15:20:00 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 17:42:24 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static const char	*ft_pass_whitespace(const char *str)
 	return (str);
 }
 
-int					ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	unsigned long long	result;
-	int					sign;
+	long long	result;
+	int			sign;
 
 	result = 0;
 	sign = 1;
@@ -35,17 +35,13 @@ int					ft_atoi(const char *str)
 	}
 	while (*str && *str >= '0' && *str <= '9')
 	{
-		result *= 10;
-		result += *str - '0';
-		str++;
-	}
-	if (result == 9223372036854775808 && sign == -1)
-		return (result * sign);
-	else if (result > 9223372036854775807)
-	{
-		if (sign == 1)
+		if (result * sign > 2147483647)
 			return (-1);
-		return (0);
+		else if (result * sign < -2147483648)
+			return (0);
+		else
+			result = result * 10 + (*str - '0');
+		str++;
 	}
 	return (result * sign);
 }

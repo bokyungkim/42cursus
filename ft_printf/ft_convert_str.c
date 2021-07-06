@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 00:03:46 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/03 16:39:18 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 17:15:07 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		ft_cutnput_str(char *str, int size)
 	int		i;
 
 	i = 0;
-	if (ft_strlen(str) >= size)
+	if ((int)ft_strlen(str) >= size)
 		ft_putstr_fd(str, 1);
 	else
 	{

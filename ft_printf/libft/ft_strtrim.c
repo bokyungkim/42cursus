@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 15:33:16 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/17 17:31:03 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:41:09 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static size_t	ft_find_last(char const *s, char const *set)
 	return (len - i);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char		*ptr;
 	size_t		first;

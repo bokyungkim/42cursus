@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:57:47 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 03:08:28 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:41:32 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - 'a' + 'A');

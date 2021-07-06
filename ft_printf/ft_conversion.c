@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_conversion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:55:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/03 17:13:07 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 23:29:37 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ void	ft_putzero(int size)
 	}
 }
 
-int		ft_get_numsize(unsigned long n, int base)
+int		ft_get_numsize(int n, int base)
 {
 	int		size;
 
+	size = 0;
 	if (n == 0)
 		size = 1;
 	else
 	{
-		size = 0;
+		if (n < 0)
+			n *= -1;
 		while (n > 0)
 		{
 			n /= base;
@@ -64,4 +66,5 @@ int		ft_conversion(int c, t_opt *option, va_list ap)
 		cnt += ft_convert_str(va_arg(ap, char *), option);
 	else if (c == 'd' || c == 'i')
 		cnt += ft_convert_int(va_arg(ap, int), option);
+	return (cnt);
 }

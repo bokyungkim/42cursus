@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:16:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/15 18:41:48 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:40:26 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t src_size;
+	size_t	i;
+	size_t	src_size;
 
 	src_size = ft_strlen(src);
 	i = 0;

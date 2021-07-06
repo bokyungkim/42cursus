@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:40:31 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/12 02:05:53 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:36:29 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
 	if ((c >= '0' && c <= '9') || \
 			(c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))

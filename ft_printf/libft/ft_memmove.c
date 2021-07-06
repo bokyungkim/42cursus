@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:52:42 by bokim             #+#    #+#             */
-/*   Updated: 2021/05/14 18:39:20 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/06 16:38:53 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!dst && !src)
