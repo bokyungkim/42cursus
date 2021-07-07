@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/07/07 00:20:22 by bokim            ###   ########.fr        #
+#    Updated: 2021/07/07 20:14:00 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,14 @@ LIBFT = libft
 LIBFT_LIB = libft.a
 
 SRCS = ft_printf.c \
-	   ft_putchar.c \
+	   ft_puts.c \
 	   ft_parse.c \
 	   ft_conversion.c \
 	   ft_convert_char.c \
 	   ft_convert_int.c \
 	   ft_convert_str.c \
+	   ft_convert_percent.c \
+	   ft_convert_unsigned.c \
 	#    main.c
 INCLUDE = ft_printf.h
 OBJS = ${SRCS:.c=.o}

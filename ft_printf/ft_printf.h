@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:09:57 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/07 00:01:40 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 20:03:54 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int		ft_get_numsize(int n, int base);
 int		ft_convert_char(char c, t_opt *option);
 int		ft_convert_str(char *str, t_opt *option);
 int		ft_convert_int(int n, t_opt *option);
+int		ft_convert_percent(t_opt *option);
+int		ft_convert_unsigned(unsigned int n, t_opt *option);
 
 #endif

@@ -4,8 +4,8 @@
 int	main(void)
 {
 	printf("\n----test1----\n");
-	ft_printf("%03d", -1);
+	ft_printf("%-3.*u", 1, 4294967284);
 	printf("\n");
-	printf("%03d", -1);
+	printf("%-3.*u", 1, 4294967284);
 	return (0);
 }

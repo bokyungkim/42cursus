@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 00:03:46 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/06 23:59:38 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 19:09:42 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@ static void	ft_cutnput_str(char *str, int size)
 	int		i;
 
 	i = 0;
-	if ((int)ft_strlen(str) >= size)
-		ft_putstr_fd(str, 1);
-	else
+	while (i < size)
 	{
-		while (i < size)
-		{
-			ft_putchar_fd(str[i], 1);
-			i++;
-		}
+		ft_putchar_fd(str[i], 1);
+		i++;
 	}
 	return ;
 }
@@ -39,8 +34,10 @@ int	ft_convert_str(char *str, t_opt *option)
 	int		len;
 	int		i;
 
-	len = ft_strlen(str);
 	i = 0;
+	if (!str)
+		str = "(null)";
+	len = ft_strlen(str);
 	if (option->precision > len || option->precision <= -1) //음수일 때는 precision 사용하지 않을 때임
 		option->precision = len;
 	if (option->width <= option->precision)

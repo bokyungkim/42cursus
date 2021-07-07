@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 16:46:55 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/07 00:19:37 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 20:03:42 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 // num이 음수일 때, '-'는 precision의 크기에 포함되지 않음
 // 음수일 때, '-'는 nbr_size에 포함되지 않음
 // 		ex) -14 => nbr_size = 2
-static void	ft_write_right(t_opt *option, int minus, int n, int num_size)
+
+static void	ft_put_right(t_opt *option, int minus, int n, int num_size)
 {
 	ft_putspace(option->width - option->precision - minus);
 	if (minus == 1)
@@ -30,7 +31,7 @@ static void	ft_write_right(t_opt *option, int minus, int n, int num_size)
 	ft_putnbr_fd(n, 1);
 }
 
-static void	ft_write_left(t_opt *option, int minus, int n, int num_size)
+static void	ft_put_left(t_opt *option, int minus, int n, int num_size)
 {
 	if (minus == 1)
 	{
@@ -61,9 +62,9 @@ int	ft_convert_int(int n, t_opt *option)
 	if (option->precision <= -1 || option->precision < num_size)
 		option->precision = num_size;
 	if (option->left == 0)
-		ft_write_right(option, minus, n, num_size);
+		ft_put_right(option, minus, n, num_size);
 	else
-		ft_write_left(option, minus, n, num_size);
+		ft_put_left(option, minus, n, num_size);
 	if (option->width > option->precision)
 		return (option->width);
 	else
