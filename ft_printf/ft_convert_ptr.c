@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 23:25:47 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/08 02:00:02 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 03:33:26 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	ft_put_ptr(unsigned long long n)
 {
 	char	ch;
 
-	if (n >= 16)
-		ft_put_ptr(n / 16);
-	ch = n % 16;
+	if (n >= HEX)
+		ft_put_ptr(n / HEX);
+	ch = n % HEX;
 	if (ch > 9)
 		ch += 'a' - 10;
 	else
@@ -44,7 +44,7 @@ static void	ft_put_ptr(unsigned long long n)
 static void	ft_put_ptr_right(unsigned long long n, int num_size, t_opt *option)
 {
 	ft_putspace(option->width - option->precision - 2);
-	ft_putstr_fd("0x", 1);
+	ft_putstr_fd("0x", FD);
 	ft_putzero(option->precision - num_size);
 	if (num_size)
 		ft_put_ptr(n);
@@ -52,7 +52,7 @@ static void	ft_put_ptr_right(unsigned long long n, int num_size, t_opt *option)
 
 static void	ft_put_ptr_left(unsigned long long n, int num_size, t_opt *option)
 {
-	ft_putstr_fd("0x", 1);
+	ft_putstr_fd("0x", FD);
 	ft_putzero(option->precision - num_size);
 	if (num_size)
 		ft_put_ptr(n);

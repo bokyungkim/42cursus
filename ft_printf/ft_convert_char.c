@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 00:03:15 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/08 02:04:57 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 03:37:11 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	ft_convert_char(char c, t_opt *option)
 	if (option->left == 0)
 	{
 		ft_putspace(len - 1);
-		ft_putchar_fd(c, 1);
+		ft_putchar(c);
 	}
 	else
 	{
-		ft_putchar_fd(c, 1);
+		ft_putchar(c);
 		ft_putspace(len - 1);
 	}
 	return (len);

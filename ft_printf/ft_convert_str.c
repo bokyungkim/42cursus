@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 00:03:46 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/08 02:05:22 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 03:33:52 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_cutnput_str(char *str, int size)
 	i = 0;
 	while (i < size)
 	{
-		ft_putchar_fd(str[i], 1);
+		ft_putchar(str[i]);
 		i++;
 	}
 	return ;

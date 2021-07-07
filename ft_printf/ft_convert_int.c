@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 16:46:55 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/08 02:05:07 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 03:37:42 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_put_right(t_opt *option, int minus, int n, int num_size)
 	ft_putspace(option->width - option->precision - minus);
 	if (minus == 1 && n != -2147483648)
 	{
-		ft_putchar_fd('-', 1);
+		ft_putchar('-');
 		n *= -1;
 	}
 	ft_putzero(option->precision - num_size);
@@ -28,7 +28,7 @@ static void	ft_put_left(t_opt *option, int minus, int n, int num_size)
 {
 	if (minus == 1 && n != -2147483648)
 	{
-		ft_putchar_fd('-', 1);
+		ft_putchar('-');
 		n *= -1;
 	}
 	ft_putzero(option->precision - num_size);
