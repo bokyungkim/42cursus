@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:07:34 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/07 00:11:25 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/07 22:22:37 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_control(va_list ap, char *input)
 	{
 		while (input[*idx] != '%' && input[*idx] != '\0')
 		{
-			cnt += ft_putchar(input[*idx], 1);
+			cnt += ft_putchar(input[*idx]);
 			*idx += 1;
 		}
 		if (input[*idx] == '%' && input[*idx] != '\0')

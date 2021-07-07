@@ -6,15 +6,15 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 21:03:20 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/07 20:03:03 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 01:55:10 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char s, int fd)
+int	ft_putchar(char s)
 {
-	ft_putchar_fd(s, fd);
+	ft_putchar_fd(s, FD);
 	return (1);
 }
 
@@ -42,26 +42,28 @@ void	ft_putzero(int size)
 	}
 }
 
-void	ft_put_right(t_opt *option, int minus, int n, int num_size)
+void	ft_put_int(int n)
 {
-	ft_putspace(option->width - option->precision - minus);
-	if (minus == 1)
-	{
-		ft_putchar_fd('-', 1);
-		n *= -1;
-	}
-	ft_putzero(option->precision - num_size);
-	ft_putnbr_fd(n, 1);
+	ft_putnbr_fd(n, FD);
 }
 
-void	ft_put_left(t_opt *option, int minus, int n, int num_size)
+void	ft_put_uint(unsigned int n, int base, int conversion)
 {
-	if (minus == 1)
+	char	ch;
+
+	if (n >= (unsigned int)base)
+		ft_put_uint(n / (unsigned int)base, base, conversion);
+	if (conversion == SMALLX || conversion == BIGX)
 	{
-		ft_putchar_fd('-', 1);
-		n *= -1;
+		ch = n % (unsigned int)base;
+		if (ch > 9)
+			ch += 'a' - 10;
+		else
+			ch += '0';
 	}
-	ft_putzero(option->precision - num_size);
-	ft_putnbr_fd(n, 1);
-	ft_putspace(option->width - option->precision - minus);
+	else
+		ch = (n % (unsigned int)base + '0');
+	if (conversion == BIGX)
+		ch = ft_toupper(ch);
+	write(FD, &ch, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:55:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/07 20:06:29 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 01:48:54 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	ft_get_numsize(int n, int base)
 		size = 1;
 	else
 	{
-		if (n < 0)
+		if (n < 0 && n != -2147483648)
 			n *= -1;
-		while (n > 0)
+		while (n > 0 || n == -2147483648)
 		{
 			n /= base;
+			if (n < 0)
+				n *= -1;
 			size++;
 		}
 	}
@@ -47,5 +49,11 @@ int	ft_conversion(int c, t_opt *option, va_list ap)
 		cnt += ft_convert_percent(option);
 	else if (c == 'u')
 		cnt += ft_convert_unsigned(va_arg(ap, int), option);
+	else if (c == 'x')
+		cnt += ft_convert_hex(va_arg(ap, int), option, SMALLX);
+	else if (c == 'X')
+		cnt += ft_convert_hex(va_arg(ap, int), option, BIGX);
+	else if (c == 'p')
+		cnt += ft_convert_ptr(va_arg(ap, void *), option);
 	return (cnt);
 }

@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/07/07 20:14:00 by bokim            ###   ########.fr        #
+#    Updated: 2021/07/08 01:14:46 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,16 +23,17 @@ SRCS = ft_printf.c \
 	   ft_convert_str.c \
 	   ft_convert_percent.c \
 	   ft_convert_unsigned.c \
-	#    main.c
+	   ft_convert_hex.c \
+	   ft_convert_ptr.c
 INCLUDE = ft_printf.h
 OBJS = ${SRCS:.c=.o}
 RM = rm -rf
 
 LIBC = ar rcs
 CC = gcc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-all: ${NAME} #${CC}
+all: ${NAME}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCLUDE}
@@ -42,12 +43,8 @@ ${NAME} : ${OBJS}
 	cp ${LIBFT}/${LIBFT_LIB} ${NAME}
 	${LIBC} ${NAME} ${OBJS}
 
-# ${CC}:
-# 		${CC} ${CFLAGS} ${SRCS} ${INCLUDE} -L./libft -lft
-# 		./a.out
-
 clean:
-		${RM} ${OBJS} a.out a.out.dSYM ft_printf.h.gch
+		${RM} ${OBJS}
 		make clean -C ${LIBFT}
 
 fclean: clean
