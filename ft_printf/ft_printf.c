@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:07:34 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/07 22:22:37 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 20:08:21 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,42 +23,47 @@ void	ft_reset_option(t_opt *option, int *idx)
 	*idx += 1;
 }
 
-int	ft_control(va_list ap, char *input)
+int	ft_control(va_list ap, t_opt *option, char *input)
 {
-	t_opt	*option;
+	int		ret;
 	int		cnt;
 	int		*idx;
 
+	ret = 0;
 	cnt = 0;
-	option = (t_opt *)malloc(sizeof(t_opt));
-	if (!option)
-		return (-1);
 	idx = &(option->index);
 	*idx = 0;
 	while (input[*idx] != '\0')
 	{
 		while (input[*idx] != '%' && input[*idx] != '\0')
 		{
-			cnt += ft_putchar(input[*idx]);
+			ret += ft_putchar(input[*idx]);
 			*idx += 1;
 		}
 		if (input[*idx] == '%' && input[*idx] != '\0')
 		{
 			ft_reset_option(option, idx);
-			cnt += ft_parse(input, option, ap);
+			cnt = ft_parse(input, option, ap);
+			if (cnt == -1)
+				return (ret = -1);
+			ret += cnt;
 		}
 	}
-	free(option);
-	return (cnt);
+	return (ret);
 }
 
 int	ft_printf(const char *input, ...)
 {
 	va_list	ap;
+	t_opt	*option;
 	int		ret;
 
 	va_start(ap, input);
-	ret = ft_control(ap, (char *)input);
+	option = (t_opt *)malloc(sizeof(t_opt));
+	if (!option)
+		return (-1);
+	ret = ft_control(ap, option, (char *)input);
+	free(option);
 	va_end(ap);
 	return (ret);
 }

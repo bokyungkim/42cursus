@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 00:03:46 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/08 03:33:52 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 20:17:01 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ static void	ft_put_str_left(char *str, t_opt *option)
 int	ft_convert_str(char *str, t_opt *option)
 {
 	int		len;
-	int		i;
 
-	i = 0;
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);

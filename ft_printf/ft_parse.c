@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:52:20 by bokim             #+#    #+#             */
-/*   Updated: 2021/07/08 01:54:48 by bokim            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:51:15 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int	ft_parse_width(char c, t_opt *option, va_list ap)
 	{
 		tmp = va_arg(ap, int);
 		if (tmp > 0)
-			option->width = option->width * 10 + tmp;
+			option->width = tmp;
 		else if (tmp == 0)
 			option->zero = 1;
 		else
 		{
 			option->left = 1;
-			option->width = option->width * 10 + (tmp * (-1));
+			option->width = tmp * (-1);
 		}
 	}
 	else
@@ -53,9 +53,9 @@ int	ft_parse_precision(char c, t_opt *option, va_list ap)
 	{
 		tmp = va_arg(ap, int);
 		if (tmp < 0)
-			option->precision = -2;
+			option->precision = -1;
 		else
-			option->precision = option->precision * 10 + tmp;
+			option->precision = tmp;
 	}
 	else
 		option->precision = option->precision * 10 + (c - 48);
@@ -85,14 +85,14 @@ int	ft_parse(char *input, t_opt *option, va_list ap)
 		option->precision = 0;
 		(*idx)++;
 	}
-	while (ft_strchr(DIGIT, input[*idx]) && option->dot == 1 && input)
+	while (ft_strchr(DIGIT, input[*idx]) && option->dot == 1
+		&& input[*idx] != '\0')
 		*idx = ft_parse_precision(input[*idx], option, ap);
 	if (option->left == 1 && option->zero == 1)
 		option->zero = 0;
-	if (ft_strchr(TYPE, input[*idx]) && input)
-		*idx = ft_parse_type(input[*idx], option);
-	else
+	if (!(ft_strchr(TYPE, input[*idx]) && input))
 		return (-1);
+	*idx = ft_parse_type(input[*idx], option);
 	cnt += ft_conversion(option->type, option, ap);
 	return (cnt);
 }
