@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/25 23:16:28 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/11 16:10:19 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/12 02:32:08 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "./so_long.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	printf("hi");
-	return (0);
+	t_list	*pre;
+	t_list	*post;
+
+	if (!lst || !del)
+		return ;
+	post = *lst;
+	pre = post;
+	while (pre)
+	{
+		post = post->next;
+		del(pre->content);
+		free(pre);
+		pre = post;
+	}
+	*lst = NULL;
 }

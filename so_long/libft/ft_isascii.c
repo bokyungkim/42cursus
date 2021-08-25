@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/25 23:16:28 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/05 21:48:39 by bokim             #+#    #+#             */
+/*   Updated: 2021/07/06 16:38:44 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "./so_long.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_isascii(int c)
 {
-	printf("hi");
+	if (c >= 0 && c <= 127)
+		return (1);
 	return (0);
 }

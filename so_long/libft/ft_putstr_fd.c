@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/25 23:16:28 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/10 23:34:25 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/10 23:43:45 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "./so_long.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_putstr_fd(char *s, int fd)
 {
-	printf("hi");
-	return (0);
+	size_t	i;
+
+	if (!s || fd < 0)
+		return ;
+	i = 0;
+	while (i < ft_strlen(s))
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

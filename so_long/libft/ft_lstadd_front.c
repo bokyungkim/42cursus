@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/25 23:16:28 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/11 14:40:07 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/17 18:21:56 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "./so_long.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	printf("hi");
-	return (0);
+	if (!lst || !new)
+		return ;
+	if (*lst)
+		new->next = *lst;
+	else
+		new->next = NULL;
+	*lst = new;
 }

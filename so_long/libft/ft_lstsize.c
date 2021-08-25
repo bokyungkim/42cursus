@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/25 23:16:28 by bokim            ###   ########.fr       */
+/*   Created: 2021/05/11 14:58:43 by bokim             #+#    #+#             */
+/*   Updated: 2021/05/12 02:49:08 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "./so_long.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_lstsize(t_list *lst)
 {
-	printf("hi");
-	return (0);
+	int		size;
+	t_list	*tmp;
+
+	if (!lst)
+		return (0);
+	size = 1;
+	tmp = lst;
+	while (tmp->next)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	return (size);
 }
