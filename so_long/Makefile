@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/08/30 17:26:52 by bokim            ###   ########.fr        #
+#    Updated: 2021/08/30 18:23:02 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,17 +25,13 @@ OBJS = ${patsubst src%, objs%, ${SRCS:.c=.o}}
 CC = gcc
 RM = rm -rf
 
-all: ${MLX} ${LFT} objs ${NAME}
+all: objs ${NAME}
 	./so_long
 
 ${NAME}: ${OBJS}
-	${CC} -o $@ $^ ${LIB}
-
-${MLX}:
-	make -s -C mlx
-
-${LFT}:
 	make -s -C libft
+	make -s -C mlx
+	${CC} -o $@ $^ ${LIB} -framework OpenGL -framework Appkit
 
 objs:
 	mkdir -p objs
@@ -45,12 +41,13 @@ objs/%.o: srcs/%.c
 
 clean:
 	make -s $@ -C libft
+	make -s $@ -C mlx
 	${RM} ${OBJS} objs
 
 fclean: clean
 	make -s $@ -C libft
 	${RM} ${NAME}
 
-re: fclean all
+re: clean all
 
 .PHONY: all clean fclean re
