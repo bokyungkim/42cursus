@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/05/17 18:43:26 by bokim            ###   ########.fr        #
+#    Updated: 2021/08/31 00:41:52 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,19 +78,19 @@ RM = rm -f
 all: ${NAME}
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ_FILES}
-			ar rcs $@ $^
+			@ar rcs $@ $^
 
 bonus:
-			make HAS_BNS=1 all
+			@make HAS_BNS=1 all
 
 clean:
-		${RM} ${OBJS} ${BNS_O}
+		@${RM} ${OBJS} ${BNS_O}
 
 fclean: clean
-		${RM} ${NAME}
+		@${RM} ${NAME}
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/30 17:34:04 by bokim            ###   ########.fr       */
+/*   Updated: 2021/08/30 23:32:43 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_game
 	void *mlx;
 	void *win;
 	t_map map;
-	t_img player;
+	t_player player;
 	t_img ground;
 	t_img wall;
 	t_img item;
@@ -77,5 +77,6 @@ typedef struct s_game
 void	error_end(char *str);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
+void	read_file(t_game *game, char *filename);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/08/30 18:23:02 by bokim            ###   ########.fr        #
+#    Updated: 2021/08/31 01:29:25 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,36 +18,35 @@ LIB = -L ./libft -lft -L ./mlx -lmlx
 INC_PATH = ./includes/
 SRC_PATH = ./srcs/
 INC = 	${INC_PATH}so_long.h
-SRCS = 	${SRC_PATH}main.c \
-		${SRC_PATH}init_game.c
-OBJS = ${patsubst src%, objs%, ${SRCS:.c=.o}}
+SRC = 	main.c \
+		init_game.c \
+		map_read.c
+SRCS = ${addprefix ${SRC_PATH}, ${SRC}}
+OBJS = ${SRCS:.c=.o}
 
 CC = gcc
 RM = rm -rf
 
-all: objs ${NAME}
-	./so_long
+all: ${NAME}
+	@./so_long ./maps/map.txt
 
 ${NAME}: ${OBJS}
-	make -s -C libft
-	make -s -C mlx
-	${CC} -o $@ $^ ${LIB} -framework OpenGL -framework Appkit
-
-objs:
-	mkdir -p objs
-
-objs/%.o: srcs/%.c
-	${CC} ${INC} -o $@ -c $<
+	@make -s -C libft
+	@make -s -C mlx
+	@${CC} -o $@ $^ ${LIB} -framework OpenGL -framework Appkit
 
 clean:
-	make -s $@ -C libft
-	make -s $@ -C mlx
-	${RM} ${OBJS} objs
+	@${RM} ${OBJS}
+	@echo deleted all object files
 
 fclean: clean
-	make -s $@ -C libft
-	${RM} ${NAME}
+	@make -s $@ -C libft
+	@make -s clean -C mlx
+	@${RM} ${NAME}
+	@echo deleted libft and mlx
 
 re: clean all
+
+.SILENT: ${OBJS}
 
 .PHONY: all clean fclean re

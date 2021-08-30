@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/30 17:13:50 by bokim            ###   ########.fr       */
+/*   Updated: 2021/08/31 00:35:47 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,30 @@ void error_end(char *str)
 	exit(1);
 }
 
-int is_ber(char *file)
+void	check_ber(char *filename)
 {
 	int i;
-	int len;
 
-	len = ft_strlen(file);
-	while (file[i] && file[i] != '.')
-	{
-		i++;
-		len--;
-	}
-	if (ft_strncmp(file + i, ".ber", len) == 0
-		|| ft_strncmp(file + i, ".BER", len) == 0)
-		return (1);
-	else
-		return (0);
+	i = ft_strlen(filename) - 4;
+	if (filename[i] != '.' || i <= 0)
+		error_end("Wrong filename extension");
+	if (ft_strncmp(filename + i, ".ber", 4) != 0
+		&& ft_strncmp(filename + i, ".BER", 4) != 0)
+		error_end("Wrong filename extension");
+	else ;
 }
 
 int main(int argc, char **argv)
 {
-	t_game *game;
+	t_game game;
 
 	if (argc != 2)
 		error_end("Wrong number of arguments");
-	if (is_ber(argv[1]) == 0)
-		error_end("Wrong filename extension");
-	init_game(game);
-	return (0);
+	check_ber(argv[1]);
+	read_file(&game, argv[1]);
+	init_game(&game);
+	// mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, &deal_key, &game);
+	// mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, &close_game, &game);
+	// mlx_loop_hook(game.mlx, &main_loop, &game);
+	mlx_loop(game.mlx);
 }
