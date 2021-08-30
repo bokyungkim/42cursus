@@ -6,15 +6,17 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/30 14:50:53 by bokim            ###   ########.fr       */
+/*   Updated: 2021/08/30 17:13:50 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "../includes/so_long.h"
 
-void error_end(void)
+void error_end(char *str)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error:\t", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	exit(1);
 }
 
@@ -41,9 +43,9 @@ int main(int argc, char **argv)
 	t_game *game;
 
 	if (argc != 2)
-		error_end();
+		error_end("Wrong number of arguments");
 	if (is_ber(argv[1]) == 0)
-		error_end();
+		error_end("Wrong filename extension");
 	init_game(game);
 	return (0);
 }

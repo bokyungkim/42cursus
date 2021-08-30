@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/30 14:50:49 by bokim            ###   ########.fr       */
+/*   Updated: 2021/08/30 17:34:04 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_game
 	t_img portal;
 }	t_game;
 
+void	error_end(char *str);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 
