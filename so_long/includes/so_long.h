@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/30 23:32:43 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/01 16:56:16 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void	error_end(char *str);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 void	read_file(t_game *game, char *filename);
+void	check_ber(char *filename);
 
 #endif
