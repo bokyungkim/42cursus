@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/08/31 00:41:52 by bokim            ###   ########.fr        #
+#    Updated: 2021/09/02 23:41:50 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,28 +50,20 @@ SRCS = ft_atoi.c\
 	   ft_putstr_fd.c\
 	   ft_putendl_fd.c\
 	   ft_putnbr_fd.c\
-
-BNS = ft_lstnew.c\
-	  ft_lstadd_front.c\
-	  ft_lstsize.c\
-	  ft_lstlast.c\
-	  ft_lstadd_back.c\
-	  ft_lstdelone.c\
-	  ft_lstclear.c\
-	  ft_lstiter.c\
-	  ft_lstmap.c\
+	   ft_lstnew.c\
+	   ft_lstadd_front.c\
+	   ft_lstsize.c\
+	   ft_lstlast.c\
+	   ft_lstadd_back.c\
+	   ft_lstdelone.c\
+	   ft_lstclear.c\
+	   ft_lstiter.c\
+	   ft_lstmap.c\
+	   get_next_line.c\
 
 INCLUDE = libft.h
 
 OBJS = ${SRCS:.c=.o}
-
-BNS_O = ${BNS:.c=.o}
-
-ifdef HAS_BNS
-	OBJ_FILES = ${OBJS} ${BNS_O}
-else
-	OBJ_FILES = ${OBJS}
-endif
 
 RM = rm -f
 
@@ -80,18 +72,15 @@ all: ${NAME}
 .c.o:
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJ_FILES}
-			@ar rcs $@ $^
-
-bonus:
-			@make HAS_BNS=1 all
+${NAME}: ${OBJS}
+		@ar rcs $@ $^
 
 clean:
-		@${RM} ${OBJS} ${BNS_O}
+		@${RM} ${OBJS}
 
 fclean: clean
 		@${RM} ${NAME}
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

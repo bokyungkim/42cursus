@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/01 16:55:46 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/02 22:13:08 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void error_end(char *str)
 	ft_putstr_fd("\n", 2);
 	exit(1);
 }
-
-
 
 int main(int argc, char **argv)
 {

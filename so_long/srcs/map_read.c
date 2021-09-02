@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/01 17:04:23 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/02 23:03:37 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,14 @@ void	check_ber(char *filename)
 void	read_file(t_game *game, char *filename)
 {
 	int	fd;
-	
+
 	check_ber(filename);
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	if (fd <= 1)
 		error_end("File Open Error");
+	else
+	{
+		close(fd);
+		error_end("Test");
+	}
 }
