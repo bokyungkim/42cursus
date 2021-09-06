@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/09/02 23:40:10 by bokim            ###   ########.fr        #
+#    Updated: 2021/09/06 18:21:49 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CC = gcc
 RM = rm -rf
 
 all: ${NAME}
-	@./so_long ./maps/map.ber
+	./so_long ./maps/map.ber
 
 ${NAME}: ${OBJS}
 	@make -s -C libft

@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/01 16:56:16 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/06 18:24:44 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,17 @@ typedef struct s_game
 	t_img portal;
 }	t_game;
 
+//main.c
 void	error_end(char *str);
+
+//init_game.c
 void	init_game(t_game *game);
 void	init_window(t_game *game);
+
+//map_read.c
 void	read_file(t_game *game, char *filename);
 void	check_ber(char *filename);
+int		check_right_char(char *line);
+void	init_map(t_game *game, int fd, char *filename);
 
 #endif
