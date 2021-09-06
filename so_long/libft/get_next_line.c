@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:48:05 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/06 17:51:46 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/06 18:48:59 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		free_backup(char **backup)
+static void	free_backup(char **backup)
 {
 	if (*backup)
 	{
@@ -22,7 +22,7 @@ static void		free_backup(char **backup)
 	return ;
 }
 
-static int		read_until_nl(int fd, char **backup)
+static int	read_until_nl(int fd, char **backup)
 {
 	int		len;
 	int		ret;
@@ -50,7 +50,7 @@ static int		read_until_nl(int fd, char **backup)
 	return (ret);
 }
 
-static int		split_line(char **line, char **backup)
+static int	split_line(char **line, char **backup)
 {
 	char	*nl_ptr;
 	char	*tmp;
@@ -72,7 +72,7 @@ static int		split_line(char **line, char **backup)
 	return (1);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char		*backup[OPEN_MAX];
 	int				read_size;
@@ -85,9 +85,13 @@ int				get_next_line(int fd, char **line)
 		if (!(backup[fd]))
 			return (-1);
 	}
-	while (!(ft_strchr(backup[fd], '\n')) &&
-			((read_size = read_until_nl(fd, &backup[fd])) > 0))
-		;
+	//간단하게 수정 필요
+	if (!(ft_strchr(backup[fd], '\n')))
+		read_size = read_until_nl(fd, &backup[fd]);
+	while (!(ft_strchr(backup[fd], '\n'))
+		&& (read_size > 0))
+		read_size = read_until_nl(fd, &backup[fd]);
+	//여기까지	
 	if (read_size == -1)
 	{
 		free_backup(&backup[fd]);
@@ -95,7 +99,8 @@ int				get_next_line(int fd, char **line)
 	}
 	if ((ft_strchr(backup[fd], '\n')))
 		return (split_line(line, &backup[fd]));
-	if (!(*line = ft_strdup(backup[fd])))
+	*line = ft_strdup(backup[fd]);
+	if (!*line)
 		return (-1);
 	free_backup(&backup[fd]);
 	return (0);
