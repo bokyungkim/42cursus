@@ -6,24 +6,12 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/06 18:34:02 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/07 16:22:45 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "../includes/so_long.h"
-
-void	check_ber(char *filename)
-{
-	int i;
-
-	i = ft_strlen(filename) - 4;
-	if (filename[i] != '.' || i <= 0)
-		error_end("Wrong filename extension");
-	if (ft_strncmp(filename + i, ".ber", 4) != 0
-		&& ft_strncmp(filename + i, ".BER", 4) != 0)
-		error_end("Wrong filename extension");
-}
 
 int	check_right_char(char *line)
 {
@@ -34,27 +22,21 @@ int	check_right_char(char *line)
 	{
 		if (line[num] != '0' && line[num] != '1' && line[num] != 'C'
 			&& line[num] != 'E' && line[num] != 'P')
-		error_end("Wrong char in map file");
+			error_end("Wrong char in map file");
 		num++;
 	}
 	return (num);
 }
 
-void	init_map(t_game *game, int fd, char *filename)
+void	get_map_info(t_game *game, int fd, char *filename)
 {
 	char	*line;
 	int		gnl_ret;
 	int		tmp_col;
 	int		row;
-	
+
 	line = NULL;
-	game->map.file = filename;
-	/*
-		gnl 반환 값
-		1: 한 라인이 읽혔을 때
-		0: EOF에 도달했을 때
-		-1: 에러가 발생했을 때
-	*/
+	game->map.filename = filename;
 	gnl_ret = get_next_line(fd, &line);
 	game->map.col = check_right_char(line);
 	row = 1;
@@ -72,21 +54,74 @@ void	init_map(t_game *game, int fd, char *filename)
 		game->map.row = row;
 	else if (gnl_ret == -1)
 		error_end("GNL error");
-	printf("map.col = %d\n", game->map.col);
-	printf("map.row = %d\n", game->map.row);
+	close(fd);
+}
+
+void	fill_map(t_game *game, int fd)
+{
+	char	*line;
+	int		gnl_ret;
+	int		i;
+	int		j;
+
+	line = NULL;
+	i = 0;
+	while (i < game->map.row)
+	{
+		j = 0;
+		gnl_ret = get_next_line(fd, &line);
+		if (gnl_ret == -1)
+			error_end("GNL error");
+		while (j < game->map.col)
+		{
+			game->map.map[i][j] = line[j];
+			j++;
+		}
+		i++;
+	}
+}
+
+void	init_map(t_game *game, char *filename)
+{
+	int	fd;
+	int	i;
+
+	i = 0;
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		error_end("File open error");
+	game->map.map = malloc(sizeof(char *) * game->map.row);
+	if (!game->map.map)
+		error_end("Map malloc error");
+	while (i < game->map.row)
+	{
+		game->map.map[i] = malloc(sizeof(char) * game->map.col);
+		if (!game->map.map[i])
+		{
+			free(game->map.map);
+			game->map.map = NULL;
+			error_end("Map malloc error");
+		}
+		i++;
+	}
+	fill_map(game, fd);
+	close(fd);
 }
 
 void	read_file(t_game *game, char *filename)
 {
 	int	fd;
+	int	i;
 
-	check_ber(filename);
+	i = ft_strlen(filename) - 4;
+	if (filename[i] != '.' || i <= 0)
+		error_end("Wrong filename extension");
+	if (ft_strncmp(filename + i, ".ber", 4) != 0
+		&& ft_strncmp(filename + i, ".BER", 4) != 0)
+		error_end("Wrong filename extension");
 	fd = open(filename, O_RDONLY);
-	if (fd <= 1)
+	if (fd == -1)
 		error_end("File Open Error");
-	else
-	{
-		init_map(game, fd, filename);
-		close(fd);
-	}
+	get_map_info(game, fd, filename);
+	init_map(game, filename);
 }

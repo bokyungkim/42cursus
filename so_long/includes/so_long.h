@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/06 18:24:44 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/07 16:19:12 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef struct s_map
 {
 	int	col;
 	int	row;
-	char	*file;
+	char	*filename;
+	char	**map;
 }	t_map;
 
 typedef struct s_img
@@ -83,8 +84,9 @@ void	init_window(t_game *game);
 
 //map_read.c
 void	read_file(t_game *game, char *filename);
-void	check_ber(char *filename);
 int		check_right_char(char *line);
-void	init_map(t_game *game, int fd, char *filename);
+void	get_map_info(t_game *game, int fd, char *filename);
+void	fill_map(t_game *game, int fd);
+void	init_map(t_game *game, char *filename);
 
 #endif
