@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/07 17:02:50 by bokim            ###   ########.fr       */
+/*   Created: 2021/09/07 16:52:08 by bokim             #+#    #+#             */
+/*   Updated: 2021/09/07 16:59:55 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init_window(t_game *game)
+void	free_map(t_game *game)
 {
-	int	width;
-	int	height;
+	int	i;
 	
-	game->mlx = mlx_init();
-	if (!game->mlx)
+	i = 0;
+	while (i < game->map.col)
 	{
-		free_map(game);
-		error_end("mlx initialize error");
+		if (game->map.map[i])
+		{
+			free(game->map.map[i]);
+			game->map.map[i] = NULL;
+		}
+		i++;
 	}
-	width = game->map.col * TILE_SIZE;
-	height = game->map.row * TILE_SIZE;
-	game->win = mlx_new_window(game->mlx, width, height, "so_long");
-	if (!game->win)
-		error_end("window initialize error");
-}
-
-void	init_game(t_game *game)
-{
-	init_window(game);
-	//모든 구조체 요소들 init 하기
+	free(game->map.map);
+	game->map.map = NULL;
 }

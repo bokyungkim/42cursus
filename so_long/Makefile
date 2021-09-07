@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/09/07 16:16:13 by bokim            ###   ########.fr        #
+#    Updated: 2021/09/07 18:05:55 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,16 @@ LIB = -L ./libft -lft -L ./mlx -lmlx
 INC_PATH = ./includes/
 SRC_PATH = ./srcs/
 INC = 	${INC_PATH}so_long.h
-SRC = 	main.c \
-		init_game.c \
-		map_read.c
+SRC = 	main.c\
+		init_game.c\
+		map_read.c\
+		free.c\
+		init_structs.c
 SRCS = ${addprefix ${SRC_PATH}, ${SRC}}
 OBJS = ${SRCS:.c=.o}
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =
 RM = rm -rf
 
 all: ${NAME}

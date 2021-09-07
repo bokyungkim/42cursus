@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/07 16:22:45 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/07 17:02:37 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,17 @@ void	init_map(t_game *game, char *filename)
 		game->map.map[i] = malloc(sizeof(char) * game->map.col);
 		if (!game->map.map[i])
 		{
-			free(game->map.map);
-			game->map.map = NULL;
+			free_map(game);
 			error_end("Map malloc error");
 		}
 		i++;
 	}
 	fill_map(game, fd);
 	close(fd);
+	// 나중에 꼭 free 해줍시다
 }
 
-void	read_file(t_game *game, char *filename)
+void	read_map_file(t_game *game, char *filename)
 {
 	int	fd;
 	int	i;

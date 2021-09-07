@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   init_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/07 17:02:50 by bokim            ###   ########.fr       */
+/*   Created: 2021/09/07 17:32:15 by bokim             #+#    #+#             */
+/*   Updated: 2021/09/07 18:05:18 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init_window(t_game *game)
+void	init_player(t_game *game)
 {
-	int	width;
-	int	height;
 	
-	game->mlx = mlx_init();
-	if (!game->mlx)
-	{
-		free_map(game);
-		error_end("mlx initialize error");
-	}
-	width = game->map.col * TILE_SIZE;
-	height = game->map.row * TILE_SIZE;
-	game->win = mlx_new_window(game->mlx, width, height, "so_long");
-	if (!game->win)
-		error_end("window initialize error");
 }
 
-void	init_game(t_game *game)
+void	init_imgs(t_game *game)
 {
-	init_window(game);
-	//모든 구조체 요소들 init 하기
+	
+}
+
+void	init_all_structs(t_game	*game)
+{
+	init_player(game);
+	init_imgs(game);
 }

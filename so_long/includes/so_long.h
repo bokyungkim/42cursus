@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/07 16:19:12 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/07 18:06:36 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 # define KEY_D 2
 
 # define TILE_SIZE 64
+# define PLAYER_IMG "../textures/"
+# define ITEM_IMG "../textures/"
+# define WALL_IMG "../textures/"
+# define GROUND_IMG "../textures/"
+# define PORTAL_IMG "../textures/"
 
 typedef struct s_coord
 {
@@ -58,7 +63,7 @@ typedef struct s_img
 
 typedef struct s_player
 {
-	int	life;
+	t_img	img;
 	int	item;
 	int	moves;
 }	t_player;
@@ -69,9 +74,9 @@ typedef struct s_game
 	void *win;
 	t_map map;
 	t_player player;
+	t_img item;
 	t_img ground;
 	t_img wall;
-	t_img item;
 	t_img portal;
 }	t_game;
 
@@ -83,10 +88,18 @@ void	init_game(t_game *game);
 void	init_window(t_game *game);
 
 //map_read.c
-void	read_file(t_game *game, char *filename);
+void	read_map_file(t_game *game, char *filename);
 int		check_right_char(char *line);
 void	get_map_info(t_game *game, int fd, char *filename);
 void	fill_map(t_game *game, int fd);
 void	init_map(t_game *game, char *filename);
+
+//free.c
+void	free_map(t_game *game);
+
+//init_structs.c
+void	init_all_structs(t_game *game);
+void	init_player(t_game *game);
+void	init_imgs(t_game *game);
 
 #endif
