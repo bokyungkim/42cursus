@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:36:23 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/06 17:51:19 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/07 15:17:19 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 
-# define BUFFER_SIZE 1024
+# define BUFFER_SIZE 10
 
 typedef struct s_list
 {

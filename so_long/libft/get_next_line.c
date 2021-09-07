@@ -6,20 +6,20 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:48:05 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/06 18:48:59 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/07 15:31:55 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	free_backup(char **backup)
+static int	free_backup(char **backup, int ret)
 {
 	if (*backup)
 	{
 		free(*backup);
 		*backup = NULL;
 	}
-	return ;
+	return (ret);
 }
 
 static int	read_until_nl(int fd, char **backup)
@@ -31,21 +31,18 @@ static int	read_until_nl(int fd, char **backup)
 	len = ft_strlen(*backup);
 	tmp = (char *)malloc(sizeof(char) * (len + BUFFER_SIZE + 1));
 	if (!tmp)
-	{
-		free_backup(backup);
-		return (-1);
-	}
+		return (free_backup(backup, -1));
 	ft_memcpy(tmp, *backup, len);
 	ret = read(fd, tmp + len, BUFFER_SIZE);
 	if (ret == -1)
 	{
-		free_backup(backup);
+		free_backup(backup, 0);
 		free(tmp);
 		tmp = NULL;
 		return (-1);
 	}
 	*(tmp + len + ret) = '\0';
-	free_backup(backup);
+	free_backup(backup, 0);
 	*backup = tmp;
 	return (ret);
 }
@@ -60,13 +57,10 @@ static int	split_line(char **line, char **backup)
 	*nl_ptr = '\0';
 	*line = ft_strdup(*backup);
 	if (!*line)
-	{
-		free_backup(backup);
-		return (-1);
-	}
+		return (free_backup(backup, -1));
 	*backup = ft_strdup(nl_ptr + 1);
 	if (!*backup)
-		free_backup(backup);
+		free_backup(backup, 0);
 	free(tmp);
 	tmp = NULL;
 	return (1);
@@ -85,23 +79,16 @@ int	get_next_line(int fd, char **line)
 		if (!(backup[fd]))
 			return (-1);
 	}
-	//간단하게 수정 필요
-	if (!(ft_strchr(backup[fd], '\n')))
+	read_size = read_until_nl(fd, &backup[fd]);
+	while (!(ft_strchr(backup[fd], '\n')) && (read_size > 0))
 		read_size = read_until_nl(fd, &backup[fd]);
-	while (!(ft_strchr(backup[fd], '\n'))
-		&& (read_size > 0))
-		read_size = read_until_nl(fd, &backup[fd]);
-	//여기까지	
 	if (read_size == -1)
-	{
-		free_backup(&backup[fd]);
-		return (-1);
-	}
+		return (free_backup(&backup[fd], -1));
 	if ((ft_strchr(backup[fd], '\n')))
 		return (split_line(line, &backup[fd]));
 	*line = ft_strdup(backup[fd]);
 	if (!*line)
 		return (-1);
-	free_backup(&backup[fd]);
+	free_backup(&backup[fd], 0);
 	return (0);
 }
