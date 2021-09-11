@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:52:08 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/07 16:59:55 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/12 00:47:22 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_map(t_game *game)
 	int	i;
 	
 	i = 0;
-	while (i < game->map.col)
+	while (i < game->map.row)
 	{
 		if (game->map.map[i])
 		{

@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/11 21:33:57 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/12 00:51:45 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	init_map(t_game *game, char *filename)
 	while (i < game->map.row)
 	{
 		game->map.map[i] = malloc(sizeof(char) * game->map.col);
-		if (!game->map.map[i])
+		if (!(game->map.map[i]))
 		{
 			free_map(game);
 			error_end("Map malloc error");

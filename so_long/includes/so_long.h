@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/11 21:51:12 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/12 00:39:34 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 # define KEY_D 2
 
 # define TILE_SIZE 64
-# define PLAYER_IMG "../textures/player1.png"
-# define ITEM_IMG "../textures/item1.png"
-# define WALL_IMG "../textures/tree1.png"
-# define GROUND_IMG "../textures/ground1.png"
-# define PORTAL_IMG "../textures/portal1.png"
+# define PLAYER_IMG "textures/player1.xpm"
+# define ITEM_IMG "textures/item1.xpm"
+# define WALL_IMG "textures/tree1.xpm"
+# define GROUND_IMG "textures/ground1.xpm"
+# define PORTAL_IMG "textures/portal1.xpm"
 
 typedef struct s_coord
 {
@@ -53,31 +53,18 @@ typedef struct s_map
 	char	**map;
 }	t_map;
 
-typedef struct s_img
-{
-	void *ptr;
-	int *data;
-	int width;
-	int height;
-}	t_img;
-
-typedef struct s_player
-{
-	void *img;
-	int	item;
-	int	moves;
-}	t_player;
-
 typedef struct s_game
 {
 	void *mlx;
 	void *win;
 	t_map map;
-	t_player player;
-	t_img item;
-	t_img ground;
-	t_img wall;
-	t_img portal;
+	void	*player;
+	void	*item;
+	void	*ground;
+	void	*wall;
+	void	*portal;
+	int		score;
+	int		moves;
 }	t_game;
 
 //main.c
@@ -86,7 +73,6 @@ void	error_end(char *str);
 //init_game.c
 void	init_game(t_game *game);
 void	init_window(t_game *game);
-void	*init_img_ptr(t_game *game, char *path);
 
 //map_read.c
 void	read_map_file(t_game *game, char *filename);
@@ -99,7 +85,6 @@ void	free_map(t_game *game);
 
 //init_structs.c
 void	init_all_structs(t_game *game);
-void	init_player(t_game *game);
 void	init_imgs(t_game *game);
 
 //map_draw.c
@@ -108,5 +93,6 @@ void	draw_map(t_game *game);
 //check.c
 int		check_map_content(char *line);
 void	check_extension(char *filename, char *ext);
+int		check_imgs(t_game *game);
 
 #endif

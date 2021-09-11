@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/11 21:54:45 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/12 00:08:47 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,10 @@ void	init_window(t_game *game)
 		error_end("window initialize error");
 }
 
-void	*init_img_ptr(t_game *game, char *path)
-{
-	int	width;
-	int	height;
-
-	width = TILE_SIZE;
-	height = TILE_SIZE;
-	return (mlx_png_file_to_image(game->mlx, path, &width, &height));
-}
-
 void	init_game(t_game *game)
 {
 	init_window(game);
+	init_all_structs(game);
 	//모든 구조체 요소들 init 하기
-	draw_map(game);
+	// draw_map(game);
 }
