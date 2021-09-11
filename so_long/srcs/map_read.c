@@ -6,27 +6,12 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/07 17:02:37 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/11 21:33:57 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "../includes/so_long.h"
-
-int	check_right_char(char *line)
-{
-	int	num;
-
-	num = 0;
-	while (line[num])
-	{
-		if (line[num] != '0' && line[num] != '1' && line[num] != 'C'
-			&& line[num] != 'E' && line[num] != 'P')
-			error_end("Wrong char in map file");
-		num++;
-	}
-	return (num);
-}
 
 void	get_map_info(t_game *game, int fd, char *filename)
 {
@@ -38,14 +23,14 @@ void	get_map_info(t_game *game, int fd, char *filename)
 	line = NULL;
 	game->map.filename = filename;
 	gnl_ret = get_next_line(fd, &line);
-	game->map.col = check_right_char(line);
+	game->map.col = check_map_content(line);
 	row = 1;
 	if (gnl_ret == -1 || !line)
 		error_end("Invalid file content");
 	while (gnl_ret == 1)
 	{
 		gnl_ret = get_next_line(fd, &line);
-		tmp_col = check_right_char(line);
+		tmp_col = check_map_content(line);
 		if (tmp_col != game->map.col)
 			error_end("Different column number in map");
 		row++;
@@ -111,14 +96,8 @@ void	init_map(t_game *game, char *filename)
 void	read_map_file(t_game *game, char *filename)
 {
 	int	fd;
-	int	i;
 
-	i = ft_strlen(filename) - 4;
-	if (filename[i] != '.' || i <= 0)
-		error_end("Wrong filename extension");
-	if (ft_strncmp(filename + i, ".ber", 4) != 0
-		&& ft_strncmp(filename + i, ".BER", 4) != 0)
-		error_end("Wrong filename extension");
+	check_extension(filename, "ber");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		error_end("File Open Error");

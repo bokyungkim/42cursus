@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/09/07 18:05:55 by bokim            ###   ########.fr        #
+#    Updated: 2021/09/11 21:27:52 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRC = 	main.c\
 		init_game.c\
 		map_read.c\
 		free.c\
-		init_structs.c
+		init_structs.c\
+		map_draw.c\
+		check.c
 SRCS = ${addprefix ${SRC_PATH}, ${SRC}}
 OBJS = ${SRCS:.c=.o}
 
