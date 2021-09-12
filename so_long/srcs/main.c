@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/12 00:49:27 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/13 01:03:21 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void error_end(char *str)
 	exit(1);
 }
 
+int	main_loop(t_game *game)
+{
+	draw_map(game);
+}
+
 int main(int argc, char **argv)
 {
 	t_game game;
@@ -30,6 +35,6 @@ int main(int argc, char **argv)
 	init_game(&game);
 	// mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, &deal_key, &game);
 	// mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, &close_game, &game);
-	// mlx_loop_hook(game.mlx, &main_loop, &game);
+	mlx_loop_hook(game.mlx, &main_loop, &game);
 	mlx_loop(game.mlx);
 }
