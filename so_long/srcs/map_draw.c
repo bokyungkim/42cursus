@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:16:06 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/13 01:26:58 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/13 21:47:50 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ void	draw_map(t_game *game)
 			if (game->map.map[i][j] == 'C')
 				draw_item(game, j, i);
 			if (game->map.map[i][j] == 'P' || game->map.map[i][j] == 'E')
+			{
+				if (game->map.map[i][j] == 'P')
+					set_coord(game, j, i);
 				draw_player_n_portal(game, j, i, game->map.map[i][j]);
+			}
 			j++;
 		}
 		i++;

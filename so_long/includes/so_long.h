@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/13 02:41:37 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/13 22:39:05 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,17 @@
 # define X_EVENT_KEY_EXIT 17
 
 # define KEY_ESC 53
-# define KEY_Q 12
-# define KEY_E 14
 # define KEY_W 13
-# define KEY_R 15
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
 
 # define TILE_SIZE 64
 # define PLAYER_IMG "textures/penguin.xpm"
-# define ITEM_IMG "textures/coin.xpm"
+# define ITEM_IMG "textures/icecream.xpm"
 # define WALL_IMG "textures/tree1.xpm"
-# define GROUND_IMG "textures/ground1.xpm"
+# define GROUND_IMG "textures/ground2.xpm"
 # define PORTAL_IMG "textures/portal1.xpm"
-
-typedef struct s_coord
-{
-	int	x;
-	int	y;
-}	t_coord;
 
 typedef struct s_map
 {
@@ -65,6 +56,8 @@ typedef struct s_game
 	void	*portal;
 	int		score;
 	int		moves;
+	int		x;
+	int		y;
 }	t_game;
 
 //main.c
@@ -75,6 +68,7 @@ int		main_loop(t_game *game);
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 void	init_imgs_ints(t_game *game);
+void	set_coord(t_game *game, int x, int y);
 
 //map_read.c
 void	read_map_file(t_game *game, char *filename);
@@ -83,7 +77,8 @@ void	fill_map(t_game *game, int fd);
 void	init_map(t_game *game, char *filename);
 
 //free.c
-void	free_map(t_game *game);
+int		free_map(t_game *game);
+int		free_imgs(t_game *game);
 
 //map_draw.c
 void	draw_map(t_game *game);
@@ -96,5 +91,12 @@ void	draw_player_n_portal(t_game *game, int x, int y, char c);
 int		check_map_content(char *line);
 void	check_extension(char *filename, char *ext);
 int		check_imgs(t_game *game);
+int		check_item(t_game *game);
+
+//move.c
+int		move_up(t_game *game);
+int		move_down(t_game *game);
+int		move_left(t_game *game);
+int		move_right(t_game *game);
 
 #endif

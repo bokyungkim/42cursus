@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:52:08 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/12 00:47:22 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/13 21:15:12 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	free_map(t_game *game)
+int	free_map(t_game *game)
 {
 	int	i;
 	
@@ -28,4 +28,20 @@ void	free_map(t_game *game)
 	}
 	free(game->map.map);
 	game->map.map = NULL;
+	return (0);
+}
+
+int	free_imgs(t_game *game)
+{
+	if (game->player)
+		mlx_destroy_image(game->mlx, game->player);	
+	if (game->item)
+		mlx_destroy_image(game->mlx, game->item);	
+	if (game->ground)
+		mlx_destroy_image(game->mlx, game->ground);	
+	if (game->wall)
+		mlx_destroy_image(game->mlx, game->wall);	
+	if (game->portal)
+		mlx_destroy_image(game->mlx, game->portal);
+	return (0);
 }

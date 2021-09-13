@@ -6,11 +6,17 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/13 00:57:05 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/13 21:29:07 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	set_coord(t_game *game, int x, int y)
+{
+	game->x = x;
+	game->y = y;
+}
 
 void	init_window(t_game *game)
 {
@@ -53,5 +59,4 @@ void	init_game(t_game *game)
 {
 	init_window(game);
 	init_imgs_ints(game);
-	// draw_map(game);
 }
