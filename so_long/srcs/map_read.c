@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/12 00:51:45 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/24 21:06:46 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ void	read_map_file(t_game *game, char *filename)
 		error_end("File Open Error");
 	get_map_info(game, fd, filename);
 	init_map(game, filename);
+	check_map_condition(game->map);
 }

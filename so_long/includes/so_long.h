@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/13 22:39:05 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/24 21:22:18 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,24 @@ typedef struct s_game
 	void	*ground;
 	void	*wall;
 	void	*portal;
-	int		score;
 	int		moves;
 	int		x;
 	int		y;
+	int		game_status;
 }	t_game;
 
 //main.c
 void	error_end(char *str);
-int		main_loop(t_game *game);
+int		close_game(t_game *game);
+int		deal_key(int key_code, t_game *game);
+int		end_game(t_game *game);
 
 //init_game.c
 void	init_game(t_game *game);
 void	init_window(t_game *game);
 void	init_imgs_ints(t_game *game);
 void	set_coord(t_game *game, int x, int y);
+void	draw_moves(t_game *game);
 
 //map_read.c
 void	read_map_file(t_game *game, char *filename);
@@ -88,15 +91,20 @@ void	draw_item(t_game *game, int x, int y);
 void	draw_player_n_portal(t_game *game, int x, int y, char c);
 
 //check.c
-int		check_map_content(char *line);
-void	check_extension(char *filename, char *ext);
 int		check_imgs(t_game *game);
 int		check_item(t_game *game);
+
+//check_map.c
+int		check_map_content(char *line);
+void	check_extension(char *filename, char *ext);
+void	check_map_condition(t_map map);
+int		get_char_num(t_map map, char c);
 
 //move.c
 int		move_up(t_game *game);
 int		move_down(t_game *game);
 int		move_left(t_game *game);
 int		move_right(t_game *game);
+void	add_mvs_n_mv_player(int x, int y, t_game *game);
 
 #endif

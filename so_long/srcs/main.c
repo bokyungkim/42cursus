@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/13 22:31:16 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/24 20:44:55 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,20 @@ void error_end(char *str)
 	exit(1);
 }
 
-int	close_game(t_game *game)
+int close_game(t_game *game)
 {
 	free_imgs(game);
 	free_map(game);
+	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
 
-int	deal_key(int key_code, t_game *game)
+int	end_game(t_game *game)
+{
+	// 게임 정상적으로 끝내기
+}
+
+int deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
 		close_game(game);
@@ -39,19 +45,21 @@ int	deal_key(int key_code, t_game *game)
 		move_left(game);
 	else if (key_code == KEY_D)
 		move_right(game);
+	if (game->game_status == 1)
+		end_game(game);
 	return (0);
 }
 
 int main(int argc, char **argv)
 {
 	t_game game;
-
+	
 	if (argc != 2)
 		error_end("Wrong number of arguments");
 	read_map_file(&game, argv[1]);
 	init_game(&game);
 	mlx_loop_hook(game.mlx, draw_map, &game);
-	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, &deal_key, &game);
-	mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, &close_game, &game);
+	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, deal_key, &game);
+	mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, close_game, &game);
 	mlx_loop(game.mlx);
 }

@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/09/13 21:36:07 by bokim            ###   ########.fr        #
+#    Updated: 2021/09/24 21:11:06 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = 	main.c\
 		free.c\
 		map_draw.c\
 		check.c\
+		check_map.c\
 		move.c
 SRCS = ${addprefix ${SRC_PATH}, ${SRC}}
 OBJS = ${SRCS:.c=.o}
