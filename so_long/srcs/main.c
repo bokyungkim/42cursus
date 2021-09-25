@@ -6,17 +6,20 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/24 20:44:55 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/25 23:41:55 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void error_end(char *str)
+void error_end(t_game *game, char *str)
 {
 	ft_putstr_fd("Error:\t", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n", 2);
+	free_imgs(game);
+	free_map(game);
+	mlx_destroy_window(game->mlx, game->win);
 	exit(1);
 }
 
@@ -37,13 +40,13 @@ int deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
 		close_game(game);
-	else if (key_code == KEY_W)
+	else if (key_code == KEY_W && !game->game_status)
 		move_up(game);
-	else if (key_code == KEY_S)
+	else if (key_code == KEY_S && !game->game_status)
 		move_down(game);
-	else if (key_code == KEY_A)
+	else if (key_code == KEY_A && !game->game_status)
 		move_left(game);
-	else if (key_code == KEY_D)
+	else if (key_code == KEY_D && !game->game_status)
 		move_right(game);
 	if (game->game_status == 1)
 		end_game(game);
@@ -55,7 +58,7 @@ int main(int argc, char **argv)
 	t_game game;
 	
 	if (argc != 2)
-		error_end("Wrong number of arguments");
+		error_end(&game, "Wrong number of arguments");
 	read_map_file(&game, argv[1]);
 	init_game(&game);
 	mlx_loop_hook(game.mlx, draw_map, &game);

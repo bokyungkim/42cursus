@@ -6,7 +6,7 @@
 #    By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 16:50:58 by bokim             #+#    #+#              #
-#    Updated: 2021/09/24 21:11:06 by bokim            ###   ########.fr        #
+#    Updated: 2021/09/25 22:57:33 by bokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS =
 RM = rm -rf
 
 all: ${NAME}
-	./so_long ./maps/map.ber
+	./so_long ./maps/error_map.ber
 
 ${NAME}: ${OBJS}
 	@make -s -C libft

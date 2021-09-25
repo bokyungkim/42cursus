@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/24 20:53:30 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/25 23:34:24 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	init_window(t_game *game)
 	if (!game->mlx)
 	{
 		free_map(game);
-		error_end("mlx initialize error");
+		error_end(game, "mlx initialize error");
 	}
 	width = game->map.col * TILE_SIZE;
 	height = game->map.row * TILE_SIZE;
 	game->win = mlx_new_window(game->mlx, width, height, "so_long");
 	if (!game->win)
-		error_end("window initialize error");
+		error_end(game, "window initialize error");
 }
 
 void	init_imgs_ints(t_game *game)
@@ -61,7 +61,7 @@ void	init_imgs_ints(t_game *game)
 	if (check_imgs(game) == 0)
 	{
 		free_map(game);
-		error_end("Can't initialize image");
+		error_end(game, "Can't initialize image");
 	}
 }
 

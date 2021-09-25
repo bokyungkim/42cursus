@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/24 21:22:18 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/25 23:33:35 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_game
 }	t_game;
 
 //main.c
-void	error_end(char *str);
+void	error_end(t_game *game, char *str);
 int		close_game(t_game *game);
 int		deal_key(int key_code, t_game *game);
 int		end_game(t_game *game);
@@ -93,12 +93,13 @@ void	draw_player_n_portal(t_game *game, int x, int y, char c);
 //check.c
 int		check_imgs(t_game *game);
 int		check_item(t_game *game);
+int		check_extension(char *filename, char *ext);
 
 //check_map.c
-int		check_map_content(char *line);
-void	check_extension(char *filename, char *ext);
-void	check_map_condition(t_map map);
+int		check_map_content(t_game *game, char *line);
+int		check_map_condition(t_map map);
 int		get_char_num(t_map map, char c);
+int		check_map_wall(t_map map);
 
 //move.c
 int		move_up(t_game *game);
