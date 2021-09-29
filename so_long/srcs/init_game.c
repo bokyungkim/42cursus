@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 23:34:24 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/29 16:59:18 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void draw_moves(t_game *game)
 	moves = ft_itoa(game->moves);
 	mlx_string_put(game->mlx, game->win, 18, 24, 0x00660033, "MOVES : ");
 	mlx_string_put(game->mlx, game->win, 70, 24, 0x00660033, moves);
+	free(moves);
+	moves = NULL;
 	return;
 }
 

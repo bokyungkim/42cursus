@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:16:06 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 22:52:36 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/29 16:21:25 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	draw_player_n_portal(t_game *game, int x, int y, char c)
 		mlx_put_image_to_window(game->mlx, game->win, game->portal, x, y);
 }
 
-void	draw_map(t_game *game)
+int	draw_map(t_game *game)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < game->map.row)
+	i = -1;
+	while (++i < game->map.row)
 	{
 		j = 0;
 		while (j < game->map.col)
@@ -67,7 +67,7 @@ void	draw_map(t_game *game)
 			}
 			j++;
 		}
-		i++;
 	}
 	draw_moves(game);
+	return (0);
 }

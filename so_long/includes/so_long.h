@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 23:33:35 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/29 16:44:29 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_game
 void	error_end(t_game *game, char *str);
 int		close_game(t_game *game);
 int		deal_key(int key_code, t_game *game);
-int		end_game(t_game *game);
 
 //init_game.c
 void	init_game(t_game *game);
@@ -84,7 +83,7 @@ int		free_map(t_game *game);
 int		free_imgs(t_game *game);
 
 //map_draw.c
-void	draw_map(t_game *game);
+int		draw_map(t_game *game);
 void	draw_ground(t_game *game, int x, int y);
 void	draw_wall(t_game *game, int x, int y);
 void	draw_item(t_game *game, int x, int y);

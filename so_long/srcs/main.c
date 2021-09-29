@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 23:41:55 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/29 16:44:23 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int close_game(t_game *game)
 	exit(0);
 }
 
-int	end_game(t_game *game)
-{
-	// 게임 정상적으로 끝내기
-}
-
 int deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
@@ -48,8 +43,6 @@ int deal_key(int key_code, t_game *game)
 		move_left(game);
 	else if (key_code == KEY_D && !game->game_status)
 		move_right(game);
-	if (game->game_status == 1)
-		end_game(game);
 	return (0);
 }
 
@@ -65,4 +58,5 @@ int main(int argc, char **argv)
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, deal_key, &game);
 	mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, close_game, &game);
 	mlx_loop(game.mlx);
+	return (0);
 }
