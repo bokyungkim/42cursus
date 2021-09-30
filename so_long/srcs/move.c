@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:35:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/24 20:53:33 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:00:01 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	add_mvs_n_mv_player(int x, int y, t_game *game)
 	draw_map(game);
 }
 
-int move_up(t_game *game)
+int	move_up(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = game->x;
 	y = game->y;
@@ -46,10 +46,10 @@ int move_up(t_game *game)
 	return (1);
 }
 
-int move_down(t_game *game)
+int	move_down(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = game->x;
 	y = game->y;
@@ -73,10 +73,10 @@ int move_down(t_game *game)
 	return (1);
 }
 
-int move_left(t_game *game)
+int	move_left(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = game->x;
 	y = game->y;
@@ -100,10 +100,10 @@ int move_left(t_game *game)
 	return (1);
 }
 
-int move_right(t_game *game)
+int	move_right(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = game->x;
 	y = game->y;

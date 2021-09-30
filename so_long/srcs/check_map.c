@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 21:10:09 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 23:33:07 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:21:10 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ int	check_map_condition(t_map map)
 	item = get_char_num(map, 'C');
 	if (portal == 0 || player == 0 || item == 0 || check_map_wall(map) == 0)
 		return (0);
+	return (1);
 }

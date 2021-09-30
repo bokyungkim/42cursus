@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:27:27 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 23:29:39 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:12:29 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_item(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < game->map.row)
 	{
@@ -65,4 +65,13 @@ int	check_extension(char *filename, char *ext)
 	else
 		return (0);
 	return (1);
+}
+
+int	check_gnl_ret(int gnl_ret, int row, t_game *game)
+{
+	if (gnl_ret == 0)
+		game->map.row = row;
+	else if (gnl_ret == -1)
+		error_end(game, "GNL error");
+	return (0);
 }

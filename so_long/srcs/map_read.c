@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/29 17:03:35 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:12:07 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	get_map_info(t_game *game, int fd, char *filename)
 	if (gnl_ret == -1 || !line)
 		error_end(game, "Invalid file content");
 	game->map.col = check_map_content(game, line);
-	free(line);
-	line = NULL;
+	free_line(line);
 	row = 1;
 	while (gnl_ret == 1)
 	{
@@ -35,14 +34,10 @@ void	get_map_info(t_game *game, int fd, char *filename)
 		tmp_col = check_map_content(game, line);
 		if (tmp_col != game->map.col)
 			error_end(game, "Different column number in map");
-		free(line);
-		line = NULL;
+		free_line(line);
 		row++;
 	}
-	if (gnl_ret == 0)
-		game->map.row = row;
-	else if (gnl_ret == -1)
-		error_end(game, "GNL error");
+	check_gnl_ret(gnl_ret, row, game);
 	close(fd);
 }
 
@@ -66,8 +61,7 @@ void	fill_map(t_game *game, int fd)
 			game->map.map[i][j] = line[j];
 			j++;
 		}
-		free(line);
-		line = NULL;
+		free_line(line);
 		i++;
 	}
 }
@@ -96,7 +90,6 @@ void	init_map(t_game *game, char *filename)
 	}
 	fill_map(game, fd);
 	close(fd);
-	// 나중에 꼭 free 해줍시다
 }
 
 void	read_map_file(t_game *game, char *filename)

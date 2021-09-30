@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:52:08 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/25 23:43:35 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:11:25 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	free_map(t_game *game)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < game->map.row)
 	{
@@ -34,14 +34,20 @@ int	free_map(t_game *game)
 int	free_imgs(t_game *game)
 {
 	if (game->player)
-		mlx_destroy_image(game->mlx, game->player);	
+		mlx_destroy_image(game->mlx, game->player);
 	if (game->item)
-		mlx_destroy_image(game->mlx, game->item);	
+		mlx_destroy_image(game->mlx, game->item);
 	if (game->ground)
-		mlx_destroy_image(game->mlx, game->ground);	
+		mlx_destroy_image(game->mlx, game->ground);
 	if (game->wall)
-		mlx_destroy_image(game->mlx, game->wall);	
+		mlx_destroy_image(game->mlx, game->wall);
 	if (game->portal)
 		mlx_destroy_image(game->mlx, game->portal);
 	return (0);
+}
+
+void	free_line(char *line)
+{
+	free(line);
+	line = NULL;
 }

@@ -6,22 +6,22 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:00:02 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/29 16:59:18 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 19:58:33 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void draw_moves(t_game *game)
+void	draw_moves(t_game *game)
 {
-	char *moves;
+	char	*moves;
 
 	moves = ft_itoa(game->moves);
 	mlx_string_put(game->mlx, game->win, 18, 24, 0x00660033, "MOVES : ");
 	mlx_string_put(game->mlx, game->win, 70, 24, 0x00660033, moves);
 	free(moves);
 	moves = NULL;
-	return;
+	return ;
 }
 
 void	set_coord(t_game *game, int x, int y)
@@ -34,7 +34,7 @@ void	init_window(t_game *game)
 {
 	int	width;
 	int	height;
-	
+
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{

@@ -6,13 +6,13 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/29 16:44:23 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:34:59 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void error_end(t_game *game, char *str)
+void	error_end(t_game *game, char *str)
 {
 	ft_putstr_fd("Error:\t", 2);
 	ft_putstr_fd(str, 2);
@@ -23,7 +23,7 @@ void error_end(t_game *game, char *str)
 	exit(1);
 }
 
-int close_game(t_game *game)
+int	close_game(t_game *game)
 {
 	free_imgs(game);
 	free_map(game);
@@ -31,7 +31,7 @@ int close_game(t_game *game)
 	exit(0);
 }
 
-int deal_key(int key_code, t_game *game)
+int	deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
 		close_game(game);
@@ -46,10 +46,10 @@ int deal_key(int key_code, t_game *game)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game game;
-	
+	t_game	game;
+
 	if (argc != 2)
 		error_end(&game, "Wrong number of arguments");
 	read_map_file(&game, argv[1]);

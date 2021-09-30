@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/29 16:44:29 by bokim            ###   ########.fr       */
+/*   Updated: 2021/09/30 20:11:39 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	init_map(t_game *game, char *filename);
 //free.c
 int		free_map(t_game *game);
 int		free_imgs(t_game *game);
+void	free_line(char *line);
 
 //map_draw.c
 int		draw_map(t_game *game);
@@ -93,6 +94,7 @@ void	draw_player_n_portal(t_game *game, int x, int y, char c);
 int		check_imgs(t_game *game);
 int		check_item(t_game *game);
 int		check_extension(char *filename, char *ext);
+int		check_gnl_ret(int gnl_ret, int row, t_game *game);
 
 //check_map.c
 int		check_map_content(t_game *game, char *line);
