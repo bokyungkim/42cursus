@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 21:10:09 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/30 20:21:10 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/01 18:55:49 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	check_map_content(t_game *game, char *line)
 	{
 		if (line[num] != '0' && line[num] != '1' && line[num] != 'C'
 			&& line[num] != 'E' && line[num] != 'P')
-			error_end(game, "Wrong char in map file");
+			{
+				free_map(game);
+				error_end(game, "Wrong char in map file");
+			}
 		num++;
 	}
 	return (num);

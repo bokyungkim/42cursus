@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:52:08 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/30 20:11:25 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/01 18:25:16 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ int	free_map(t_game *game)
 		}
 		i++;
 	}
-	free(game->map.map);
-	game->map.map = NULL;
+	if (game->map.map)
+	{
+		free(game->map.map);
+		game->map.map = NULL;
+	}
 	return (0);
 }
 

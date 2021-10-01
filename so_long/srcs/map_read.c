@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/30 20:12:07 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/01 18:56:33 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	get_map_info(t_game *game, int fd, char *filename)
 	game->map.filename = filename;
 	gnl_ret = get_next_line(fd, &line);
 	if (gnl_ret == -1 || !line)
+	{
+		free_map(game);
 		error_end(game, "Invalid file content");
+	}
 	game->map.col = check_map_content(game, line);
 	free_line(line);
 	row = 1;
@@ -55,7 +58,10 @@ void	fill_map(t_game *game, int fd)
 		j = 0;
 		gnl_ret = get_next_line(fd, &line);
 		if (gnl_ret == -1 || !line)
+		{
+			free_map(game);	
 			error_end(game, "GNL error");
+		}
 		while (j < game->map.col)
 		{
 			game->map.map[i][j] = line[j];
@@ -77,7 +83,10 @@ void	init_map(t_game *game, char *filename)
 		error_end(game, "File open error");
 	game->map.map = malloc(sizeof(char *) * game->map.row);
 	if (!game->map.map)
+	{
+		game->map.map = NULL;
 		error_end(game, "Map malloc error");
+	}
 	while (i < game->map.row)
 	{
 		game->map.map[i] = malloc(sizeof(char) * game->map.col);

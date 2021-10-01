@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:27:27 by bokim             #+#    #+#             */
-/*   Updated: 2021/09/30 20:12:29 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/01 18:56:01 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int	check_gnl_ret(int gnl_ret, int row, t_game *game)
 	if (gnl_ret == 0)
 		game->map.row = row;
 	else if (gnl_ret == -1)
+	{
+		free_map(game);
 		error_end(game, "GNL error");
+	}
 	return (0);
 }
