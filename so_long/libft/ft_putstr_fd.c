@@ -6,15 +6,15 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 23:34:25 by bokim             #+#    #+#             */
-/*   Updated: 2021/08/27 16:29:29 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/04 23:33:43 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s || fd < 0)
-		return;
+		return ;
 	write(fd, s, ft_strlen(s));
 }
