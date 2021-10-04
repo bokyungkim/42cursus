@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/04 23:11:44 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/05 00:52:58 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
 		close_game(game);
-	else if (key_code == KEY_W && !game->game_status)
+	else if (key_code == KEY_W && game->game_status == RUNNING)
 		move_up(game);
-	else if (key_code == KEY_S && !game->game_status)
+	else if (key_code == KEY_S && game->game_status == RUNNING)
 		move_down(game);
-	else if (key_code == KEY_A && !game->game_status)
+	else if (key_code == KEY_A && game->game_status == RUNNING)
 		move_left(game);
-	else if (key_code == KEY_D && !game->game_status)
+	else if (key_code == KEY_D && game->game_status == RUNNING)
 		move_right(game);
 	return (0);
 }
