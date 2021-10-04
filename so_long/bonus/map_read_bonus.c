@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_read.c                                         :+:      :+:    :+:   */
+/*   map_read_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/04 23:30:08 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/05 00:10:27 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include "../includes/so_long.h"
+#include "so_long_bonus.h"
 
 static void	get_map_info(t_game *game, int fd, char *filename)
 {

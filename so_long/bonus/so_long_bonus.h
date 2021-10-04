@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/04 23:32:38 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/05 00:12:55 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -60,39 +60,39 @@ typedef struct s_game
 	int		game_status;
 }	t_game;
 
-//main.c
+//main_bonus.c
 void	error_end(t_game *game, char *str);
 int		close_game(t_game *game);
 int		deal_key(int key_code, t_game *game);
 
-//init_game.c
+//init_game_bonus.c
 void	init_game(t_game *game);
 void	set_coord(t_game *game, int x, int y);
 void	draw_moves(t_game *game);
 
-//map_read.c
+//map_read_bonus.c
 void	read_map_file(t_game *game, char *filename);
 
-//free.c
+//free_bonus.c
 int		free_map(t_game *game);
 int		free_imgs(t_game *game);
 void	free_line(char *line);
 
-//map_draw.c
+//map_draw_bonus.c
 int		draw_map(t_game *game);
 
-//check.c
+//check_bonus.c
 int		check_imgs(t_game *game);
 int		check_item(t_game *game);
 int		check_extension(char *filename, char *ext);
 int		check_gnl_ret(int gnl_ret, int row, t_game *game);
 
-//check_map.c
+//check_map_bonus.c
 int		check_map_content(t_game *game, char *line);
 int		check_map_condition(t_map map);
 int		check_map_wall(t_map map);
 
-//move.c
+//move_bonus.c
 int		move_up(t_game *game);
 int		move_down(t_game *game);
 int		move_left(t_game *game);
