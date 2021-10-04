@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:40:07 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/01 18:51:27 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/04 22:36:37 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ void	error_end(t_game *game, char *str)
 	ft_putstr_fd("Error:\t", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n", 2);
-	free_imgs(game);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(1);
 }
 
 int	close_game(t_game *game)
 {
-	free_imgs(game);
 	free_map(game);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
