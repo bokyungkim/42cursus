@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/05 00:12:55 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/05 02:39:19 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_RELEASE 3
 # define X_EVENT_KEY_EXIT 17
+# define END 1
+# define RUNNING 0
+# define NO_MORE_ITEM 1
+# define HAS_ITEM 0
 
 # define KEY_ESC 53
 # define KEY_W 13
@@ -60,39 +64,39 @@ typedef struct s_game
 	int		game_status;
 }	t_game;
 
-//main_bonus.c
+//main.c
 void	error_end(t_game *game, char *str);
 int		close_game(t_game *game);
 int		deal_key(int key_code, t_game *game);
 
-//init_game_bonus.c
+//init_game.c
 void	init_game(t_game *game);
 void	set_coord(t_game *game, int x, int y);
 void	draw_moves(t_game *game);
 
-//map_read_bonus.c
+//map_read.c
 void	read_map_file(t_game *game, char *filename);
 
-//free_bonus.c
+//free.c
 int		free_map(t_game *game);
 int		free_imgs(t_game *game);
 void	free_line(char *line);
 
-//map_draw_bonus.c
+//map_draw.c
 int		draw_map(t_game *game);
 
-//check_bonus.c
+//check.c
 int		check_imgs(t_game *game);
 int		check_item(t_game *game);
 int		check_extension(char *filename, char *ext);
 int		check_gnl_ret(int gnl_ret, int row, t_game *game);
 
-//check_map_bonus.c
+//check_map.c
 int		check_map_content(t_game *game, char *line);
 int		check_map_condition(t_map map);
 int		check_map_wall(t_map map);
 
-//move_bonus.c
+//move.c
 int		move_up(t_game *game);
 int		move_down(t_game *game);
 int		move_left(t_game *game);

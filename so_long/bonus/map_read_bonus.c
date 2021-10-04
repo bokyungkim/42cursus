@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:26:12 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/05 00:10:27 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/05 02:39:05 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	get_map_info(t_game *game, int fd, char *filename)
 	{
 		gnl_ret = get_next_line(fd, &line);
 		tmp_col = check_map_content(game, line);
+		free_line(line);
 		if (tmp_col != game->map.col)
 			error_end(game, "Different column number in map");
-		free_line(line);
 		row++;
 	}
 	check_gnl_ret(gnl_ret, row, game);
@@ -85,7 +85,10 @@ static void	init_map(t_game *game, char *filename)
 	{
 		game->map.map[i] = malloc(sizeof(char) * game->map.col);
 		if (!(game->map.map[i]))
+		{
+			free_map(game);
 			error_end(game, "Map malloc error");
+		}
 		i++;
 	}
 	fill_map(game, fd);
@@ -96,13 +99,16 @@ void	read_map_file(t_game *game, char *filename)
 {
 	int	fd;
 
-	if (check_extension(filename, "ber") == 0)
+	if (check_extension(filename, "ber") == -1)
 		error_end(game, "Wrong filename extension");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		error_end(game, "File Open Error");
 	get_map_info(game, fd, filename);
 	init_map(game, filename);
-	if (check_map_condition(game->map) == 0)
+	if (check_map_condition(game->map) == -1)
+	{
+		free_map(game);
 		error_end(game, "Wrong map content");
+	}
 }

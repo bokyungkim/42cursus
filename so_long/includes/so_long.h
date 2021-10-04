@@ -6,7 +6,7 @@
 /*   By: bokim <bokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 22:39:56 by bokim             #+#    #+#             */
-/*   Updated: 2021/10/05 00:52:24 by bokim            ###   ########.fr       */
+/*   Updated: 2021/10/05 02:25:23 by bokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define X_EVENT_KEY_EXIT 17
 # define END 1
 # define RUNNING 0
+# define NO_MORE_ITEM 1
+# define HAS_ITEM 0
 
 # define KEY_ESC 53
 # define KEY_W 13
